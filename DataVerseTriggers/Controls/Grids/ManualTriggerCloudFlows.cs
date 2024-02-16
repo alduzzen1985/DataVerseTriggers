@@ -5,37 +5,33 @@ using System.Windows.Forms;
 using DataVerseTrigger.Enums;
 using DataVerseTrigger.Extensions;
 using DataVerseTrigger.Models;
+using DataVerseTrigger.Models.CloudFlows;
 
 namespace DataVerseTrigger.Controls.Grids
 {
-    public partial class ScheduledTrigger : BaseControl
+    public partial class ManualTriggerCloudFlows : BaseControl
     {
-        private List<ScheduledCloudFlow> lsScheduledCloudFlows;
-        public List<ScheduledCloudFlow> LstScheduledCloudFlows
+        private List<ManualCloudFlow> lsManualCloudFlows;
+        public List<ManualCloudFlow> LstScheduledCloudFlows
         {
-            get => lsScheduledCloudFlows; set
+            get => lsManualCloudFlows; set
             {
-                lsScheduledCloudFlows = value;
-                filtersScheduled1.LstScheduledCloudFlows = value;
+                lsManualCloudFlows = value;
             }
         }
 
 
 
-        public ScheduledTrigger()
+        public ManualTriggerCloudFlows()
         {
             InitializeComponent();
 
         }
 
-        private void FiltersScheduled1_OnFilterApplied(List<ScheduledCloudFlow> LstScheduledCloudFlows)
-        {
-            throw new NotImplementedException();
-        }
 
         public void RefreshGrid()
         {
-            dtGridScheduled.DataSource = lsScheduledCloudFlows;
+            dtGridScheduled.DataSource = lsManualCloudFlows;
             dtGridScheduled.Refresh();
         }
 
@@ -43,14 +39,12 @@ namespace DataVerseTrigger.Controls.Grids
         {
             if (dtGridScheduled.SelectedRows.Count == 1)
             {
-                ScheduledCloudFlow selectedRow = dtGridScheduled.SelectedRows[0].DataBoundItem as ScheduledCloudFlow;
-
-
+                ManualCloudFlow selectedRow = dtGridScheduled.SelectedRows[0].DataBoundItem as ManualCloudFlow;
                 propertyGrid1.SelectedObject = selectedRow;
             }
         }
 
-        private void filtersScheduled1_OnFilterApplied(List<ScheduledCloudFlow> LstScheduledCloudFlows)
+        private void filtersScheduled1_OnFilterApplied(List<ManualCloudFlow> LstScheduledCloudFlows)
         {
             dtGridScheduled.DataSource = LstScheduledCloudFlows;
             dtGridScheduled.Refresh();
@@ -60,7 +54,7 @@ namespace DataVerseTrigger.Controls.Grids
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) { return; }
 
-            var flowRun = (ScheduledCloudFlow)dtGridScheduled.Rows[e.RowIndex].DataBoundItem;
+            var flowRun = (ManualCloudFlow)dtGridScheduled.Rows[e.RowIndex].DataBoundItem;
 
             switch (dtGridScheduled.Columns[e.ColumnIndex].Name)
             {
@@ -73,7 +67,7 @@ namespace DataVerseTrigger.Controls.Grids
         private void dtGridScheduled_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
            
-            var flow = (ScheduledCloudFlow)dtGridScheduled.Rows[e.RowIndex].DataBoundItem;
+            var flow = (ManualCloudFlow)dtGridScheduled.Rows[e.RowIndex].DataBoundItem;
             var column = dtGridScheduled.Columns[e.ColumnIndex];
             var columnName = column.Name;
 
@@ -82,6 +76,5 @@ namespace DataVerseTrigger.Controls.Grids
                 e.CellStyle.ForeColor = flow.Status == 2 ? Color.Green : Color.Red;
             }
         }
-
     }
 }

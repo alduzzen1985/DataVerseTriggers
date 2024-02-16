@@ -2,9 +2,9 @@
 {
     public static class CloudFlowKind
     {
-        const string HTTP = "Http";
-        const string BUTTON = "Button";
-        const string POWERAPPSV2 = "PowerAppV2";
+        public const string HTTP = "Http";
+        public const string BUTTON = "Button";
+        public const string POWERAPPSV2 = "PowerAppV2";
 
     }
 }

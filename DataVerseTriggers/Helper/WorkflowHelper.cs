@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using DataVerseTrigger.Enums;
 using DataVerseTrigger.Models;
+using McTools.Xrm.Connection;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
+using static DataVerseTrigger.Extensions.BaseControl;
 
 namespace DataVerseTrigger.Helper
 {
@@ -183,7 +185,7 @@ namespace DataVerseTrigger.Helper
 
                 classicWorkflow.TriggerOnUpdate = !string.IsNullOrEmpty(classicWorkflow.TriggerOnUpdateAttributeList) && classicWorkflow.TriggerOnUpdateAttributeList.Split(',').Where(x => x != "ownerid" && x != "statecode").Any();
 
-
+             
                 lsClassicWorkflows.Add(classicWorkflow);
             }
 

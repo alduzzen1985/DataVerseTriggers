@@ -1,6 +1,6 @@
 ﻿namespace DataVerseTrigger.Models
 {
-    public class ManualCloudFlows
+    public class PowerAppsV2
     {
     }
 }

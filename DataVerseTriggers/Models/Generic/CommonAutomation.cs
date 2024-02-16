@@ -33,5 +33,14 @@ namespace DataVerseTrigger.Models
         [Category("Generic")]
         [DisplayName("Name")]
         public string Name { set; get; }
+
+
+
+        [Browsable(true)]
+        [ReadOnly(true)]
+        [Description("")]
+        [Category("URL")]
+        [DisplayName("URL")]
+        public string URL { set; get; }
     }
 }

@@ -239,7 +239,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CloudFlowTriggerTypes\Dataverse.cs" />
     <Compile Include="Constants\CloudFlowAPIs.cs" />
     <Compile Include="Constants\CloudFlowKind.cs" />
     <Compile Include="Constants\CloudFlowTypes.cs" />
@@ -292,6 +291,12 @@
     <Compile Include="Controls\Grids\DataVerseTrigger.Designer.cs">
       <DependentUpon>DataVerseTrigger.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Grids\ManualTriggerCloudFlows.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Grids\ManualTriggerCloudFlows.Designer.cs">
+      <DependentUpon>ManualTriggerCloudFlows.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Grids\WorkflowTrigger.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -314,18 +319,20 @@
     <Compile Include="Helper\MetaDataHelper.cs" />
     <Compile Include="Helper\PluginHelper.cs" />
     <Compile Include="Helper\WorkflowHelper.cs" />
-    <Compile Include="Models\BindingItem.cs" />
-    <Compile Include="Models\Browser.cs" />
-    <Compile Include="Models\BrowserProfile.cs" />
-    <Compile Include="Models\ClassicWorkflow.cs" />
-    <Compile Include="Models\CommonAutomation.cs" />
-    <Compile Include="Models\DataVerseCloudFlow.cs" />
-    <Compile Include="Models\ManualCloudFlows.cs" />
-    <Compile Include="Models\Plugin.cs" />
-    <Compile Include="Models\PowerAppsTable.cs" />
-    <Compile Include="Models\ScheduledCloudFlow.cs" />
-    <Compile Include="Models\SolutionItem.cs" />
-    <Compile Include="Models\TriggerWorker.cs" />
+    <Compile Include="Models\CloudFlows\CloudFlowInputs.cs" />
+    <Compile Include="Models\CloudFlows\ManualCloudFlow.cs" />
+    <Compile Include="Models\Generic\BindingItem.cs" />
+    <Compile Include="Models\Settings\Browser.cs" />
+    <Compile Include="Models\Settings\BrowserProfile.cs" />
+    <Compile Include="Models\DataVerse\ClassicWorkflow.cs" />
+    <Compile Include="Models\Generic\CommonAutomation.cs" />
+    <Compile Include="Models\CloudFlows\DataVerseCloudFlow.cs" />
+    <Compile Include="Models\CloudFlows\PowerAppsV2.cs" />
+    <Compile Include="Models\DataVerse\Plugin.cs" />
+    <Compile Include="Models\DataVerse\PowerAppsTable.cs" />
+    <Compile Include="Models\CloudFlows\ScheduledCloudFlow.cs" />
+    <Compile Include="Models\DataVerse\SolutionItem.cs" />
+    <Compile Include="Models\Generic\TriggerWorker.cs" />
     <Compile Include="MyPlugin.cs" />
     <Compile Include="DataVerseTrigger.cs">
       <SubType>UserControl</SubType>
@@ -345,6 +352,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AGCommonLibrary.Models.Plugin.datasource" />
+    <None Include="Properties\DataSources\DataVerseTrigger.Models.CloudFlows.ManualCloudFlow.datasource" />
     <None Include="Properties\DataSources\PowerTrigger.Models.ClassicWorkflow.datasource" />
     <None Include="Properties\DataSources\PowerTrigger.Models.DataVerseCloudFlow.datasource" />
     <None Include="Properties\DataSources\PowerTrigger.Models.ScheduledCloudFlow.datasource" />
@@ -373,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Grids\DataVerseTrigger.resx">
       <DependentUpon>DataVerseTrigger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Grids\ManualTriggerCloudFlows.resx">
+      <DependentUpon>ManualTriggerCloudFlows.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Grids\WorkflowTrigger.resx">
       <DependentUpon>WorkflowTrigger.cs</DependentUpon>

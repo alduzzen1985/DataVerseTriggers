@@ -7,6 +7,6 @@ namespace DataVerseTrigger.Models
         public List<DataVerseCloudFlow> LsDataVerseFlows { get; set; }
         public List<ScheduledCloudFlow> LsScheduledCloudFlows { get; set; }
         public List<ClassicWorkflow> LsClassicWorkflows { get; set; }
-        public List<ManualCloudFlows> LsManualCloudFlows { get; set; }
+        public List<PowerAppsV2> LsManualCloudFlows { get; set; }
     }
 }

@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Windows.Forms;
 using DataVerseTrigger.Constants;
 using DataVerseTrigger.Enums;
 using DataVerseTrigger.Helper;
 using DataVerseTrigger.Models;
+using DataVerseTrigger.Models.CloudFlows;
 using McTools.Xrm.Connection;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
+using Microsoft.Xrm.Sdk.Organization;
 using Microsoft.Xrm.Sdk.Query;
+using Microsoft.Xrm.Sdk.Workflow.Activities;
 using Newtonsoft.Json.Linq;
+using NuGet.Protocol;
 using XrmToolBox.Extensibility;
 
 
@@ -26,7 +31,7 @@ namespace DataVerseTrigger
 
         private List<DataVerseCloudFlow> lsDataVerseFlows = new List<DataVerseCloudFlow>();
         private List<ScheduledCloudFlow> lsScheduledCloudFlows = new List<ScheduledCloudFlow>();
-        private List<ManualCloudFlows> lsManualCloudFlows = new List<ManualCloudFlows>();
+        private List<ManualCloudFlow> lsManualCloudFlows = new List<ManualCloudFlow>();
 
 
         private string _baseFlowUrl;
@@ -121,7 +126,8 @@ namespace DataVerseTrigger
 
             if (processType == ProcessType.CloudFlow)
             {
-                url = $"https://make.powerapps.com/environments/{ConnectionDetail.GetCrmServiceClient().EnvironmentId}/solutions/{cstPluginTriggers1.SolutionId}/objects/cloudflows/{processSelected}/view";
+                //$"https://make.powerautomate.com/environments/{ConnectionDetail.EnvironmentId}/solutions/{solutionId}/flows/{cmn.Workflowuniqueid}/details";
+                url = $"https://make.powerautomate.com/environments/{ConnectionDetail.GetCrmServiceClient().EnvironmentId}/solutions/{cstPluginTriggers1.SolutionId}/flows/{processSelected}/details";
             }
             else if (processType == ProcessType.Workflow)
             {
@@ -328,7 +334,22 @@ namespace DataVerseTrigger
 
 
 
+        private void ConfigureBaseValues(CommonAutomation cmn, Entity cloudFlow)
+        {
+            
 
+            cmn.Name = (string)cloudFlow.GetAttributeValue<AliasedValue>("workflow.name").Value;
+            cmn.Workflowid = (Guid)cloudFlow.GetAttributeValue<AliasedValue>("workflow.workflowid")
+                .Value;
+            cmn.Workflowuniqueid = (Guid)cloudFlow
+                .GetAttributeValue<AliasedValue>("workflow.workflowidunique").Value;
+            cmn.Status = ((OptionSetValue)cloudFlow
+                .GetAttributeValue<AliasedValue>("workflow.statuscode").Value).Value;
+            cmn.StatusName = cloudFlow.FormattedValues["workflow.statuscode"];
+
+         
+            
+        }
 
         private void cmbListSolutions_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -363,31 +384,59 @@ namespace DataVerseTrigger
 
                         var typeFlow = jsonCF.SelectToken("properties.definition.triggers.*.type");
                         var apiId = jsonCF.SelectToken("properties.definition.triggers.*.inputs.host.apiId");
-                        var kind = jsonCF.SelectToken("properties.definition.triggers.*.inputs.host.kind");
 
                         if (typeFlow != null)
                         {
+
+
+
+
                             switch (typeFlow.Value<string>())
                             {
 
                                 case CloudFlowTypes.OPEN_API_CONNECTION_WEBHOOK:
 
-                                    JToken dataverseProperties = jsonCF.SelectToken("properties.definition.triggers.*.inputs.parameters");
-                                    lsDataVerseFlows.Add(new DataVerseCloudFlow
-                                    {
-                                        Name = (string)cloudFlow.GetAttributeValue<AliasedValue>("workflow.name").Value,
-                                        Workflowid = (Guid)cloudFlow.GetAttributeValue<AliasedValue>("workflow.workflowid").Value,
-                                        Workflowuniqueid = (Guid)cloudFlow.GetAttributeValue<AliasedValue>("workflow.workflowidunique").Value,
-                                        Status = ((OptionSetValue)cloudFlow.GetAttributeValue<AliasedValue>("workflow.statuscode").Value).Value,
-                                        StatusName = cloudFlow.FormattedValues["workflow.statuscode"],
+                                    DataVerseCloudFlow dvCloudFlow = new DataVerseCloudFlow();
+                                    ConfigureBaseValues(dvCloudFlow, cloudFlow);
 
-                                        Entityname = dataverseProperties.SelectToken("subscriptionRequest/entityname", false) != null ? dataverseProperties.SelectToken("subscriptionRequest/entityname", false).Value<string>() : "",
-                                        Filterexpression = dataverseProperties.SelectToken("subscriptionRequest/filterexpression", false) != null ? dataverseProperties.SelectToken("subscriptionRequest/filterexpression").Value<string>() : "",
-                                        Filteringattributes = dataverseProperties.SelectToken("subscriptionRequest/filteringattributes", false) != null ? dataverseProperties.SelectToken("subscriptionRequest/filteringattributes", false).Value<string>() : "",
-                                        Message = dataverseProperties.SelectToken("subscriptionRequest/message", false) != null ? (MessageType)dataverseProperties.SelectToken("subscriptionRequest/message").Value<int>() : MessageType.NULL,
-                                        Runas = dataverseProperties.SelectToken("subscriptionRequest/runas", false) != null ? (RunAs)dataverseProperties.SelectToken("subscriptionRequest/runas").Value<int>() : RunAs.NULL,
-                                        Scope = dataverseProperties.SelectToken("subscriptionRequest/scope", false) != null ? (Scope)dataverseProperties.SelectToken("subscriptionRequest/scope").Value<int>() : Scope.NULL
-                                    });
+
+                                    JToken dataverseProperties = jsonCF.SelectToken("properties.definition.triggers.*.inputs.parameters");
+
+                                    dvCloudFlow.Entityname =
+                                        dataverseProperties.SelectToken("subscriptionRequest/entityname", false) != null
+                                            ? dataverseProperties.SelectToken("subscriptionRequest/entityname", false)
+                                                .Value<string>()
+                                            : "";
+                                    dvCloudFlow.Filterexpression =
+                                        dataverseProperties.SelectToken("subscriptionRequest/filterexpression",
+                                            false) != null
+                                            ? dataverseProperties.SelectToken("subscriptionRequest/filterexpression")
+                                                .Value<string>()
+                                            : "";
+                                    dvCloudFlow.Filteringattributes =
+                                        dataverseProperties.SelectToken("subscriptionRequest/filteringattributes",
+                                            false) != null
+                                            ? dataverseProperties
+                                                .SelectToken("subscriptionRequest/filteringattributes", false)
+                                                .Value<string>()
+                                            : "";
+                                    dvCloudFlow.Message =
+                                        dataverseProperties.SelectToken("subscriptionRequest/message", false) != null
+                                            ? (MessageType)dataverseProperties
+                                                .SelectToken("subscriptionRequest/message").Value<int>()
+                                            : MessageType.NULL;
+                                    dvCloudFlow.Runas =
+                                        dataverseProperties.SelectToken("subscriptionRequest/runas", false) != null
+                                            ? (RunAs)dataverseProperties.SelectToken("subscriptionRequest/runas")
+                                                .Value<int>()
+                                            : RunAs.NULL;
+                                    dvCloudFlow.Scope =
+                                        dataverseProperties.SelectToken("subscriptionRequest/scope", false) != null
+                                            ? (Scope)dataverseProperties.SelectToken("subscriptionRequest/scope")
+                                                .Value<int>()
+                                            : Scope.NULL;
+
+                                    lsDataVerseFlows.Add(dvCloudFlow);
 
                                     break;
 
@@ -396,14 +445,10 @@ namespace DataVerseTrigger
 
                                     JToken recurrecyProperties = jsonCF.SelectToken("properties.definition.triggers.Recurrence.recurrence");
 
-                                    ScheduledCloudFlow scheduledCloudFlow = new ScheduledCloudFlow()
-                                    {
-                                        Name = (string)cloudFlow.GetAttributeValue<AliasedValue>("workflow.name").Value,
-                                        Workflowid = (Guid)cloudFlow.GetAttributeValue<AliasedValue>("workflow.workflowid").Value,
-                                        Workflowuniqueid = (Guid)cloudFlow.GetAttributeValue<AliasedValue>("workflow.workflowidunique").Value,
-                                        Status = ((OptionSetValue)cloudFlow.GetAttributeValue<AliasedValue>("workflow.statuscode").Value).Value,
-                                        StatusName = cloudFlow.FormattedValues["workflow.statuscode"],
-                                    };
+                                    ScheduledCloudFlow scheduledCloudFlow = new ScheduledCloudFlow();
+                                    ConfigureBaseValues(scheduledCloudFlow, cloudFlow);
+
+
                                     if (recurrecyProperties != null)
                                     {
                                         scheduledCloudFlow.Frequency = recurrecyProperties.SelectToken("frequency", false).Value<string>();
@@ -445,11 +490,35 @@ namespace DataVerseTrigger
 
 
                                     break;
+                                case CloudFlowTypes.REQUEST:
+                                    string kind = (string)jsonCF.SelectToken("properties.definition.triggers.manual.kind");
 
+                                    if (kind == CloudFlowKind.POWERAPPSV2 || kind == CloudFlowKind.BUTTON)
+                                    {
+                                        ManualCloudFlow manualFlow = new ManualCloudFlow();
 
+                                        ConfigureBaseValues(manualFlow, cloudFlow);
 
+                                        JToken[] inputProperties = jsonCF.SelectTokens("properties.definition.triggers.*.inputs.schema.properties.*").ToArray();
+                                        string[] mandatoryFields = jsonCF.SelectTokens("properties.definition.triggers.*.inputs.schema.required").Values<string>().ToArray();
+                                        CloudFlowInputs[] inputs = new CloudFlowInputs[inputProperties.Length];
 
+                                        for (int i = 0; i < inputProperties.Length; i++)
+                                        {
+                                            inputs[i] = new CloudFlowInputs();
+                                            inputs[i].Title = inputProperties[i].SelectToken("title", false).Value<string>();
+                                            inputs[i].Description = inputProperties[i].SelectToken("title", false).Value<string>();
+                                            inputs[i].Content = inputProperties[i].SelectToken("x-ms-content-hint", false).Value<string>();
+                                            string prop = inputProperties[i].Path.Split('.').Last();
+                                            inputs[i].Mandatory = mandatoryFields.Contains(prop);
+                                        }
 
+                                        manualFlow.Inputs = inputs;
+                                        manualFlow.Kind = kind;
+                                        lsManualCloudFlows.Add(manualFlow);
+                                    }
+
+                                    break;
                             }
 
                         }
@@ -484,6 +553,10 @@ namespace DataVerseTrigger
                         cstControlDataverseTriggers.Service = this.Service;
                         cstControlDataverseTriggers.LstDataVerseTriggers = lsDataVerseFlows;
                         cstControlDataverseTriggers.RefreshGrid();
+
+
+                        cstManualTrigger.LstScheduledCloudFlows = lsManualCloudFlows;
+                        cstManualTrigger.RefreshGrid();
 
 
                         cstControlRecurrencyTriggers.LstScheduledCloudFlows = lsScheduledCloudFlows;
@@ -1070,7 +1143,7 @@ namespace DataVerseTrigger
             LoadPlugin();
         }
 
-    
+
     }
 
 
