@@ -60,6 +60,11 @@ namespace DataVerseTrigger.Controls.Filters
             List<DataVerseCloudFlow> lstDataVerseTriggersFiltered = LstDataVerseTriggers;
 
 
+            if (!string.IsNullOrEmpty(txtName.Text))
+            {
+                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Name.Contains(txtName.Text)).ToList();
+            }
+
             if (checkedItemsMessages.Length > 0)
             {
 

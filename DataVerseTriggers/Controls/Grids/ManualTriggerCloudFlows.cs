@@ -14,9 +14,10 @@ namespace DataVerseTrigger.Controls.Grids
         private List<ManualCloudFlow> lsManualCloudFlows;
         public List<ManualCloudFlow> LstScheduledCloudFlows
         {
-            get => lsManualCloudFlows; set
+            get => lsManualCloudFlows;
+            set
             {
-                lsManualCloudFlows = value;
+                filtersManual1.LstManualFlows = lsManualCloudFlows = value;
             }
         }
 
@@ -25,7 +26,6 @@ namespace DataVerseTrigger.Controls.Grids
         public ManualTriggerCloudFlows()
         {
             InitializeComponent();
-
         }
 
 
@@ -44,11 +44,6 @@ namespace DataVerseTrigger.Controls.Grids
             }
         }
 
-        private void filtersScheduled1_OnFilterApplied(List<ManualCloudFlow> LstScheduledCloudFlows)
-        {
-            dtGridScheduled.DataSource = LstScheduledCloudFlows;
-            dtGridScheduled.Refresh();
-        }
 
         private void dtGridScheduled_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -66,7 +61,7 @@ namespace DataVerseTrigger.Controls.Grids
 
         private void dtGridScheduled_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-           
+
             var flow = (ManualCloudFlow)dtGridScheduled.Rows[e.RowIndex].DataBoundItem;
             var column = dtGridScheduled.Columns[e.ColumnIndex];
             var columnName = column.Name;
@@ -75,6 +70,14 @@ namespace DataVerseTrigger.Controls.Grids
             {
                 e.CellStyle.ForeColor = flow.Status == 2 ? Color.Green : Color.Red;
             }
+
+
+        }
+
+        private void filtersManual1_OnFilterApplied(List<ManualCloudFlow> LstManualFlows)
+        {
+            dtGridScheduled.DataSource = LstManualFlows;
+            dtGridScheduled.Refresh();
         }
     }
 }

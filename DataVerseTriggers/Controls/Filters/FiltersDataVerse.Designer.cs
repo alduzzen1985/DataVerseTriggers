@@ -32,7 +32,10 @@ namespace DataVerseTrigger.Controls.Filters
         {
             this.pnlFilters = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.attributesSelector1 = new AttributesSelector();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.attributesSelector1 = new Controls.Forms.AttributesSelector();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
             this.chkMessages = new System.Windows.Forms.CheckedListBox();
@@ -52,6 +55,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.lnkClearFilters = new System.Windows.Forms.LinkLabel();
             this.pnlFilters.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -77,12 +81,39 @@ namespace DataVerseTrigger.Controls.Filters
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.attributesSelector1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 20);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(450, 198);
             this.panel6.TabIndex = 24;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.lblName);
+            this.panel7.Controls.Add(this.txtName);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(450, 82);
+            this.panel7.TabIndex = 28;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(23, 13);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(51, 20);
+            this.lblName.TabIndex = 5;
+            this.lblName.Text = "Name";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(27, 36);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(380, 26);
+            this.txtName.TabIndex = 4;
             // 
             // attributesSelector1
             // 
@@ -263,6 +294,8 @@ namespace DataVerseTrigger.Controls.Filters
             this.pnlFilters.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -298,5 +331,8 @@ namespace DataVerseTrigger.Controls.Filters
         private System.Windows.Forms.Label lblFilterAttributes;
         private System.Windows.Forms.TextBox txtFilterAttributes;
         private System.Windows.Forms.LinkLabel lnkClearFilters;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtName;
     }
 }

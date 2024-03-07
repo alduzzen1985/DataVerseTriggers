@@ -36,11 +36,6 @@ namespace DataVerseTrigger.Models
 
 
 
-        [Browsable(true)]
-        [ReadOnly(true)]
-        [Description("")]
-        [Category("URL")]
-        [DisplayName("URL")]
-        public string URL { set; get; }
+  
     }
 }

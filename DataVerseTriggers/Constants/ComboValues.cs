@@ -89,6 +89,10 @@ namespace DataVerseTrigger.Constants
                 new BindingItem{Value="1", Description="Asyncronous" }
          };
 
-
+        public static BindingItem[] KIND = new BindingItem[]
+        {
+            new BindingItem{Value="Button", Description="Button" },
+            new BindingItem{Value="PowerAppV2", Description="PowerAppV2" }
+        };
     }
 }

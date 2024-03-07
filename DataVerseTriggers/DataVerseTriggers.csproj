@@ -249,6 +249,12 @@
     <Compile Include="Controls\Filters\FilterPlugins.Designer.cs">
       <DependentUpon>FilterPlugins.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Filters\FiltersManual.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Filters\FiltersManual.Designer.cs">
+      <DependentUpon>FiltersManual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Filters\FiltersWorklfows.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -360,6 +366,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\Filters\FilterPlugins.resx">
       <DependentUpon>FilterPlugins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filters\FiltersManual.resx">
+      <DependentUpon>FiltersManual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Filters\FiltersWorklfows.resx">
       <DependentUpon>FiltersWorklfows.cs</DependentUpon>

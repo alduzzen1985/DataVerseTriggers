@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using DataVerseTrigger.Constants;
 using DataVerseTrigger.Extensions;
 using DataVerseTrigger.Models;
+using Microsoft.Xrm.Sdk;
 
 namespace DataVerseTrigger.Controls.Filters
 {
@@ -14,6 +16,18 @@ namespace DataVerseTrigger.Controls.Filters
         public event FilterApplied OnFilterApplied;
 
         public List<ScheduledCloudFlow> LstScheduledCloudFlows { set; get; }
+
+        private IOrganizationService _service;
+        public IOrganizationService Service
+        {
+            set
+            {
+                _service = value;
+
+            }
+            get { return _service; }
+        }
+
 
 
         public FiltersScheduled()
@@ -42,6 +56,11 @@ namespace DataVerseTrigger.Controls.Filters
 
             List<ScheduledCloudFlow> lstScheduledFlowsFiltered = LstScheduledCloudFlows;
 
+
+            if (!string.IsNullOrEmpty(txtName.Text))
+            {
+                lstScheduledFlowsFiltered = lstScheduledFlowsFiltered.Where(x => x.Name.Contains(txtName.Text)).ToList();
+            }
 
             if (checkedItemsWeekDays.Length > 0)
             {

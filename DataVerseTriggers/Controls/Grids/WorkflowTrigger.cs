@@ -67,10 +67,10 @@ namespace DataVerseTrigger.Controls.Grids
             }
         }
 
-        private void filterWorkflows1_OnFilterApplied(bool triggeroncreate, bool triggerondelete, bool triggerOnUpdate, bool triggerOnAssign, bool onStatusChanged, string[] attributesOnUpdate, Mode[] modes, Scope[] scopes, int? tableObjectCode, bool isOnDemand)
+        private void filterWorkflows1_OnFilterApplied(string name, bool triggeroncreate, bool triggerondelete, bool triggerOnUpdate, bool triggerOnAssign, bool onStatusChanged, string[] attributesOnUpdate, Mode[] modes, Scope[] scopes, int? tableObjectCode, bool isOnDemand)
         {
 
-            dtWorkflows.DataSource = WorkflowHelper.GetWorkflowsByFilters(Service, SolutionId, triggeroncreate,
+            dtWorkflows.DataSource = WorkflowHelper.GetWorkflowsByFilters(Service, SolutionId, name, triggeroncreate,
                 triggerondelete, triggerOnUpdate,
                 triggerOnAssign, onStatusChanged, attributesOnUpdate, modes, scopes,
                 tableObjectCode, isOnDemand);

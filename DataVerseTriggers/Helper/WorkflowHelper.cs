@@ -53,6 +53,7 @@ namespace DataVerseTrigger.Helper
 
 
         public static List<ClassicWorkflow> GetWorkflowsByFilters(IOrganizationService Service, Guid solutionId,
+            string name,
             bool triggeroncreate,
             bool triggerondelete,
             bool triggerOnUpdate,
@@ -68,6 +69,12 @@ namespace DataVerseTrigger.Helper
         {
 
             StringBuilder conditions = new StringBuilder();
+
+
+            if (!string.IsNullOrEmpty((name)))
+            {
+                conditions.AppendLine($"<condition attribute='name' operator='like' value='%{name}%' />");
+            }
 
             if (triggeroncreate)
             {

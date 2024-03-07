@@ -14,7 +14,7 @@ namespace DataVerseTrigger.Controls.Filters
     {
         private IOrganizationService _service;
 
-        public delegate void FilterApplied(bool triggeroncreate,
+        public delegate void FilterApplied(string name, bool triggeroncreate,
             bool triggerondelete,
             bool triggerOnUpdate,
             bool triggerOnAssign,
@@ -95,7 +95,7 @@ namespace DataVerseTrigger.Controls.Filters
 
             if (OnFilterApplied != null)
             {
-                OnFilterApplied(isCreate, isDelete, true, isAssign, isStatusChange, attributesSelector1.SelectedAttributes, modes, scopes, tableObjectCode, chkOnDemand.Checked);
+                OnFilterApplied(textBox1.Text, isCreate, isDelete, true, isAssign, isStatusChange, attributesSelector1.SelectedAttributes, modes, scopes, tableObjectCode, chkOnDemand.Checked);
             }
 
         }

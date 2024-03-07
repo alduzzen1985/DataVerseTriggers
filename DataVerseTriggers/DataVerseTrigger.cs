@@ -554,11 +554,12 @@ namespace DataVerseTrigger
                         cstControlDataverseTriggers.LstDataVerseTriggers = lsDataVerseFlows;
                         cstControlDataverseTriggers.RefreshGrid();
 
-
+                        cstManualTrigger.Service = this.Service;
                         cstManualTrigger.LstScheduledCloudFlows = lsManualCloudFlows;
                         cstManualTrigger.RefreshGrid();
 
 
+                        cstControlRecurrencyTriggers.Service = this.Service;
                         cstControlRecurrencyTriggers.LstScheduledCloudFlows = lsScheduledCloudFlows;
                         cstControlRecurrencyTriggers.RefreshGrid();
 
@@ -687,8 +688,8 @@ namespace DataVerseTrigger
                    var excel = new Microsoft.Office.Interop.Excel.Application();
                    var wb = excel.Workbooks.Add();
 
-                   GetWorkSheetWorkflowsAndAttributes((Worksheet)wb.Sheets.Add());
-                   GetWorkSheetDataVerseFlowsAttributes((Worksheet)wb.Sheets.Add());
+                   //GetWorkSheetWorkflowsAndAttributes((Worksheet)wb.Sheets.Add());
+                   //GetWorkSheetDataVerseFlowsAttributes((Worksheet)wb.Sheets.Add());
 
                    GetWorkSheetPlugins((Worksheet)wb.Sheets.Add());
                    GetWorkSheetWorkflows((Worksheet)wb.Sheets.Add());
@@ -908,7 +909,7 @@ namespace DataVerseTrigger
             failureCondition.Interior.Color = ColorTranslator.ToOle(Color.Orange);
             failureCondition.Font.Bold = true;
 
-            var range = sh.Range["A1", $"M{cstPluginTriggers1.LstPlugins.Length + 1}"];
+            var range = sh.Range["A1", $"H{cstPluginTriggers1.LstPlugins.Length + 1}"];
             FormatAsTable(range, "TableWorkflows", "TableStyleMedium15");
 
             range.Columns.AutoFit();

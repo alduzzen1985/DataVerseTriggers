@@ -34,6 +34,11 @@ namespace DataVerseTrigger.Controls.Grids
             this.components = new System.ComponentModel.Container();
             this.pnlData = new System.Windows.Forms.Panel();
             this.dtGridScheduled = new System.Windows.Forms.DataGridView();
+            this.Name = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kind = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workflowidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workflowuniqueidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manualCloudFlowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.scheduledCloudFlowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlDetails = new System.Windows.Forms.Panel();
@@ -41,11 +46,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.tabDetails = new System.Windows.Forms.TabPage();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.tabFilters = new System.Windows.Forms.TabPage();
-            this.Name = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kind = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workflowidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workflowuniqueidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filtersManual1 = new Controls.Filters.FiltersManual();
             this.pnlData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridScheduled)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manualCloudFlowBindingSource)).BeginInit();
@@ -53,6 +54,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.pnlDetails.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabDetails.SuspendLayout();
+            this.tabFilters.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlData
@@ -89,63 +91,6 @@ namespace DataVerseTrigger.Controls.Grids
             this.dtGridScheduled.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridScheduled_CellClick);
             this.dtGridScheduled.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtGridScheduled_CellFormatting);
             this.dtGridScheduled.SelectionChanged += new System.EventHandler(this.dtGridScheduled_SelectionChanged);
-            // 
-            // manualCloudFlowBindingSource
-            // 
-            this.manualCloudFlowBindingSource.DataSource = typeof(Models.CloudFlows.ManualCloudFlow);
-            // 
-            // scheduledCloudFlowBindingSource
-            // 
-            this.scheduledCloudFlowBindingSource.DataSource = typeof(Models.ScheduledCloudFlow);
-            // 
-            // pnlDetails
-            // 
-            this.pnlDetails.Controls.Add(this.tabControl1);
-            this.pnlDetails.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDetails.Location = new System.Drawing.Point(1400, 0);
-            this.pnlDetails.Name = "pnlDetails";
-            this.pnlDetails.Size = new System.Drawing.Size(450, 1120);
-            this.pnlDetails.TabIndex = 3;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabDetails);
-            this.tabControl1.Controls.Add(this.tabFilters);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(450, 1120);
-            this.tabControl1.TabIndex = 3;
-            // 
-            // tabDetails
-            // 
-            this.tabDetails.Controls.Add(this.propertyGrid1);
-            this.tabDetails.Location = new System.Drawing.Point(4, 29);
-            this.tabDetails.Name = "tabDetails";
-            this.tabDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDetails.Size = new System.Drawing.Size(442, 1087);
-            this.tabDetails.TabIndex = 0;
-            this.tabDetails.Text = "Details";
-            this.tabDetails.UseVisualStyleBackColor = true;
-            // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(436, 1081);
-            this.propertyGrid1.TabIndex = 1;
-            // 
-            // tabFilters
-            // 
-            this.tabFilters.Location = new System.Drawing.Point(4, 29);
-            this.tabFilters.Name = "tabFilters";
-            this.tabFilters.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFilters.Size = new System.Drawing.Size(442, 1087);
-            this.tabFilters.TabIndex = 1;
-            this.tabFilters.Text = "Filters";
-            this.tabFilters.UseVisualStyleBackColor = true;
             // 
             // Name
             // 
@@ -196,6 +141,79 @@ namespace DataVerseTrigger.Controls.Grids
             this.workflowuniqueidDataGridViewTextBoxColumn.Visible = false;
             this.workflowuniqueidDataGridViewTextBoxColumn.Width = 150;
             // 
+            // manualCloudFlowBindingSource
+            // 
+            this.manualCloudFlowBindingSource.DataSource = typeof(Models.CloudFlows.ManualCloudFlow);
+            // 
+            // scheduledCloudFlowBindingSource
+            // 
+            this.scheduledCloudFlowBindingSource.DataSource = typeof(Models.ScheduledCloudFlow);
+            // 
+            // pnlDetails
+            // 
+            this.pnlDetails.Controls.Add(this.tabControl1);
+            this.pnlDetails.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlDetails.Location = new System.Drawing.Point(1400, 0);
+            this.pnlDetails.Name = "pnlDetails";
+            this.pnlDetails.Size = new System.Drawing.Size(450, 1120);
+            this.pnlDetails.TabIndex = 3;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabDetails);
+            this.tabControl1.Controls.Add(this.tabFilters);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(450, 1120);
+            this.tabControl1.TabIndex = 3;
+            // 
+            // tabDetails
+            // 
+            this.tabDetails.Controls.Add(this.propertyGrid1);
+            this.tabDetails.Location = new System.Drawing.Point(4, 29);
+            this.tabDetails.Name = "tabDetails";
+            this.tabDetails.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDetails.Size = new System.Drawing.Size(442, 1087);
+            this.tabDetails.TabIndex = 0;
+            this.tabDetails.Text = "Details";
+            this.tabDetails.UseVisualStyleBackColor = true;
+            // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(436, 1081);
+            this.propertyGrid1.TabIndex = 1;
+            // 
+            // tabFilters
+            // 
+            this.tabFilters.Controls.Add(this.filtersManual1);
+            this.tabFilters.Location = new System.Drawing.Point(4, 29);
+            this.tabFilters.Name = "tabFilters";
+            this.tabFilters.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFilters.Size = new System.Drawing.Size(442, 1087);
+            this.tabFilters.TabIndex = 1;
+            this.tabFilters.Text = "Filters";
+            this.tabFilters.UseVisualStyleBackColor = true;
+            // 
+            // filtersManual1
+            // 
+            this.filtersManual1.ConnectionDetail = null;
+            this.filtersManual1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filtersManual1.Location = new System.Drawing.Point(3, 3);
+            this.filtersManual1.LstManualFlows = null;
+            this.filtersManual1.Name = "filtersManual1";
+            this.filtersManual1.PluginIcon = null;
+            this.filtersManual1.Service = null;
+            this.filtersManual1.Size = new System.Drawing.Size(436, 1081);
+            this.filtersManual1.TabIcon = null;
+            this.filtersManual1.TabIndex = 0;
+            this.filtersManual1.ToolName = null;
+            this.filtersManual1.OnFilterApplied += new Controls.Filters.FiltersManual.FilterApplied(this.filtersManual1_OnFilterApplied);
+            // 
             // ManualTriggerCloudFlows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -210,6 +228,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.pnlDetails.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabDetails.ResumeLayout(false);
+            this.tabFilters.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -229,5 +248,6 @@ namespace DataVerseTrigger.Controls.Grids
         private System.Windows.Forms.DataGridViewTextBoxColumn Kind;
         private System.Windows.Forms.DataGridViewTextBoxColumn workflowidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn workflowuniqueidDataGridViewTextBoxColumn;
+        private Controls.Filters.FiltersManual filtersManual1;
     }
 }

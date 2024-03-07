@@ -44,7 +44,10 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkOnDemand = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.attributesSelector1 = new AttributesSelector();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.lblName = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.attributesSelector1 = new Controls.Forms.AttributesSelector();
             this.lnkClearFilters = new System.Windows.Forms.LinkLabel();
             this.pnlFilters.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -52,6 +55,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnApplyFilter
@@ -103,7 +107,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel5.Controls.Add(this.chkScope);
             this.panel5.Controls.Add(this.lblScope);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 337);
+            this.panel5.Location = new System.Drawing.Point(0, 353);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(450, 151);
             this.panel5.TabIndex = 23;
@@ -130,7 +134,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel4.Controls.Add(this.chkLstMode);
             this.panel4.Controls.Add(this.lblMode);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 488);
+            this.panel4.Location = new System.Drawing.Point(0, 504);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(450, 132);
             this.panel4.TabIndex = 22;
@@ -157,9 +161,9 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel3.Controls.Add(this.lblMessage);
             this.panel3.Controls.Add(this.chkEvents);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 620);
+            this.panel3.Location = new System.Drawing.Point(0, 636);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(450, 171);
+            this.panel3.Size = new System.Drawing.Size(450, 155);
             this.panel3.TabIndex = 21;
             // 
             // panel1
@@ -183,12 +187,39 @@ namespace DataVerseTrigger.Controls.Filters
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.attributesSelector1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 20);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(450, 871);
             this.panel2.TabIndex = 20;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.lblName);
+            this.panel6.Controls.Add(this.textBox1);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(450, 82);
+            this.panel6.TabIndex = 3;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(23, 13);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(51, 20);
+            this.lblName.TabIndex = 5;
+            this.lblName.Text = "Name";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(22, 41);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(380, 26);
+            this.textBox1.TabIndex = 4;
             // 
             // attributesSelector1
             // 
@@ -232,6 +263,8 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -254,5 +287,8 @@ namespace DataVerseTrigger.Controls.Filters
         private Forms.AttributesSelector attributesSelector1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.LinkLabel lnkClearFilters;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using DataVerseTrigger.Enums;
 using DataVerseTrigger.Extensions;
 using DataVerseTrigger.Models;
+using Microsoft.Xrm.Sdk;
 
 namespace DataVerseTrigger.Controls.Grids
 {
@@ -18,6 +19,16 @@ namespace DataVerseTrigger.Controls.Grids
                 lsScheduledCloudFlows = value;
                 filtersScheduled1.LstScheduledCloudFlows = value;
             }
+        }
+
+        public IOrganizationService Service
+        {
+            set
+            {
+                filtersScheduled1.Service = value;
+
+            }
+            get { return filtersScheduled1.Service; }
         }
 
 
@@ -72,7 +83,7 @@ namespace DataVerseTrigger.Controls.Grids
 
         private void dtGridScheduled_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-           
+
             var flow = (ScheduledCloudFlow)dtGridScheduled.Rows[e.RowIndex].DataBoundItem;
             var column = dtGridScheduled.Columns[e.ColumnIndex];
             var columnName = column.Name;

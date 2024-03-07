@@ -42,7 +42,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.lblExecutionMode = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.attributesSelector1 = new AttributesSelector();
+            this.attributesSelector1 = new Controls.Forms.AttributesSelector();
             this.lnkClearFilters = new System.Windows.Forms.LinkLabel();
             this.pnlFilters.SuspendLayout();
             this.panel5.SuspendLayout();
