@@ -47,9 +47,6 @@ namespace DataVerseTrigger
         {
             ShowInfoNotification("Attention ! Cloud Flows that use Legacy Dataverse connectors aren't displayed.", new Uri("https://learn.microsoft.com/en-us/connectors/commondataserviceforapps/"));
 
-           
-
-
             lblYouMustConnect.Visible = (Service == null);
             if (Service == null) return;
             // Loads or creates the settings for the plugin
