@@ -45,6 +45,11 @@ namespace DataVerseTrigger
 
         private void MyPluginControl_Load(object sender, EventArgs e)
         {
+            ShowInfoNotification("Attention ! Cloud Flows that use Legacy Dataverse connectors aren't displayed.", new Uri("https://learn.microsoft.com/en-us/connectors/commondataserviceforapps/"));
+
+           
+
+
             lblYouMustConnect.Visible = (Service == null);
             if (Service == null) return;
             // Loads or creates the settings for the plugin
@@ -506,9 +511,9 @@ namespace DataVerseTrigger
                                         for (int i = 0; i < inputProperties.Length; i++)
                                         {
                                             inputs[i] = new CloudFlowInputs();
-                                            inputs[i].Title = inputProperties[i].SelectToken("title", false).Value<string>();
-                                            inputs[i].Description = inputProperties[i].SelectToken("title", false).Value<string>();
-                                            inputs[i].Content = inputProperties[i].SelectToken("x-ms-content-hint", false).Value<string>();
+                                            inputs[i].Title = inputProperties[i].SelectToken("title", false) !=null ? inputProperties[i].SelectToken("title", false).Value<string>() : "";
+                                            inputs[i].Description = inputProperties[i].SelectToken("title", false) != null ? inputProperties[i].SelectToken("title", false).Value<string>() : "";
+                                            inputs[i].Content = inputProperties[i].SelectToken("x-ms-content-hint", false) != null ?  inputProperties[i].SelectToken("x-ms-content-hint", false).Value<string>() : "";
                                             string prop = inputProperties[i].Path.Split('.').Last();
                                             inputs[i].Mandatory = mandatoryFields.Contains(prop);
                                         }
