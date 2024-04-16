@@ -1,5 +1,4 @@
-﻿using DataVerseTrigger.Controls.Forms;
-
+﻿
 namespace DataVerseTrigger.Controls.Filters
 {
     partial class FilterPlugins

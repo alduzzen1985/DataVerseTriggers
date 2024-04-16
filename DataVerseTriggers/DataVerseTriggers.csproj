@@ -291,11 +291,11 @@
     <Compile Include="Controls\Grids\PluginTriggers.Designer.cs">
       <DependentUpon>PluginTriggers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Grids\DataVerseTrigger.cs">
+    <Compile Include="Controls\Grids\DataVerseTriggerGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Grids\DataVerseTrigger.Designer.cs">
-      <DependentUpon>DataVerseTrigger.cs</DependentUpon>
+    <Compile Include="Controls\Grids\DataVerseTriggerGrid.Designer.cs">
+      <DependentUpon>DataVerseTriggerGrid.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Grids\ManualTriggerCloudFlows.cs">
       <SubType>UserControl</SubType>
@@ -340,11 +340,11 @@
     <Compile Include="Models\DataVerse\SolutionItem.cs" />
     <Compile Include="Models\Generic\TriggerWorker.cs" />
     <Compile Include="MyPlugin.cs" />
-    <Compile Include="DataVerseTrigger.cs">
+    <Compile Include="DataVerseTriggerPlugin.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DataVerseTrigger.designer.cs">
-      <DependentUpon>DataVerseTrigger.cs</DependentUpon>
+    <Compile Include="DataVerseTriggerPlugin.designer.cs">
+      <DependentUpon>DataVerseTriggerPlugin.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -388,8 +388,8 @@
     <EmbeddedResource Include="Controls\Grids\PluginTriggers.resx">
       <DependentUpon>PluginTriggers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Grids\DataVerseTrigger.resx">
-      <DependentUpon>DataVerseTrigger.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Grids\DataVerseTriggerGrid.resx">
+      <DependentUpon>DataVerseTriggerGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Grids\ManualTriggerCloudFlows.resx">
       <DependentUpon>ManualTriggerCloudFlows.cs</DependentUpon>
@@ -400,8 +400,8 @@
     <EmbeddedResource Include="Controls\Grids\ScheduledTrigger.resx">
       <DependentUpon>ScheduledTrigger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataVerseTrigger.resx">
-      <DependentUpon>DataVerseTrigger.cs</DependentUpon>
+    <EmbeddedResource Include="DataVerseTriggerPlugin.resx">
+      <DependentUpon>DataVerseTriggerPlugin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

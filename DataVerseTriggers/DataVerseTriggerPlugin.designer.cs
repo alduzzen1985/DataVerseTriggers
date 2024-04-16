@@ -4,7 +4,7 @@ using DataVerseTrigger.Extensions;
 
 namespace DataVerseTrigger
 {
-    partial class DataVerseTrigger
+    partial class DataVerseTriggerPlugin
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -32,7 +32,7 @@ namespace DataVerseTrigger
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataVerseTrigger));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataVerseTriggerPlugin));
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.tsbClose = new System.Windows.Forms.ToolStripButton();
             this.tssSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,7 +51,7 @@ namespace DataVerseTrigger
             this.pnlFlows = new System.Windows.Forms.Panel();
             this.tabPlugins = new System.Windows.Forms.TabControl();
             this.tabDataVerseTriggers = new System.Windows.Forms.TabPage();
-            this.cstControlDataverseTriggers = new Controls.Grids.DataVerseTrigger();
+            this.cstControlDataverseTriggers = new Controls.Grids.DataVerseTriggerGrid();
             this.tabScheduled = new System.Windows.Forms.TabPage();
             this.cstControlRecurrencyTriggers = new Controls.Grids.ScheduledTrigger();
             this.tabManual = new System.Windows.Forms.TabPage();
@@ -370,7 +370,7 @@ namespace DataVerseTrigger
         private System.Windows.Forms.TabControl tabPlugins;
         private System.Windows.Forms.TabPage tabScheduled;
         private System.Windows.Forms.TabPage tabDataVerseTriggers;
-        private Controls.Grids.DataVerseTrigger cstControlDataverseTriggers;
+        private Controls.Grids.DataVerseTriggerGrid cstControlDataverseTriggers;
         private ScheduledTrigger cstControlRecurrencyTriggers;
         private System.Windows.Forms.TabPage tabWorkflows;
         private WorkflowTrigger cstControlWorkflowsTriggers;

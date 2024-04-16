@@ -34,11 +34,6 @@ namespace DataVerseTrigger.Controls.Grids
             this.components = new System.ComponentModel.Container();
             this.pnlData = new System.Windows.Forms.Panel();
             this.dtGridScheduled = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kind = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workflowidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workflowuniqueidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manualCloudFlowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.scheduledCloudFlowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlDetails = new System.Windows.Forms.Panel();
@@ -46,7 +41,12 @@ namespace DataVerseTrigger.Controls.Grids
             this.tabDetails = new System.Windows.Forms.TabPage();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.tabFilters = new System.Windows.Forms.TabPage();
-            this.filtersManual1 = new Controls.Filters.FiltersManual();
+            this.filtersManual1 = new DataVerseTrigger.Controls.Filters.FiltersManual();
+            this.NameCloudFlow = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kind = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workflowidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.workflowuniqueidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridScheduled)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manualCloudFlowBindingSource)).BeginInit();
@@ -73,7 +73,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.dtGridScheduled.AutoGenerateColumns = false;
             this.dtGridScheduled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridScheduled.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
+            this.NameCloudFlow,
             this.Status,
             this.Kind,
             this.workflowidDataGridViewTextBoxColumn,
@@ -92,62 +92,13 @@ namespace DataVerseTrigger.Controls.Grids
             this.dtGridScheduled.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtGridScheduled_CellFormatting);
             this.dtGridScheduled.SelectionChanged += new System.EventHandler(this.dtGridScheduled_SelectionChanged);
             // 
-            // Name
-            // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Name";
-            this.Name.MinimumWidth = 8;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Name.Width = 150;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "StatusName";
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 8;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 130;
-            // 
-            // Kind
-            // 
-            this.Kind.DataPropertyName = "Kind";
-            this.Kind.HeaderText = "Kind";
-            this.Kind.MinimumWidth = 8;
-            this.Kind.Name = "Kind";
-            this.Kind.ReadOnly = true;
-            this.Kind.Width = 150;
-            // 
-            // workflowidDataGridViewTextBoxColumn
-            // 
-            this.workflowidDataGridViewTextBoxColumn.DataPropertyName = "Workflowid";
-            this.workflowidDataGridViewTextBoxColumn.HeaderText = "Workflowid";
-            this.workflowidDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.workflowidDataGridViewTextBoxColumn.Name = "workflowidDataGridViewTextBoxColumn";
-            this.workflowidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.workflowidDataGridViewTextBoxColumn.Visible = false;
-            this.workflowidDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // workflowuniqueidDataGridViewTextBoxColumn
-            // 
-            this.workflowuniqueidDataGridViewTextBoxColumn.DataPropertyName = "Workflowuniqueid";
-            this.workflowuniqueidDataGridViewTextBoxColumn.HeaderText = "Workflowuniqueid";
-            this.workflowuniqueidDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.workflowuniqueidDataGridViewTextBoxColumn.Name = "workflowuniqueidDataGridViewTextBoxColumn";
-            this.workflowuniqueidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.workflowuniqueidDataGridViewTextBoxColumn.Visible = false;
-            this.workflowuniqueidDataGridViewTextBoxColumn.Width = 150;
-            // 
             // manualCloudFlowBindingSource
             // 
-            this.manualCloudFlowBindingSource.DataSource = typeof(Models.CloudFlows.ManualCloudFlow);
+            this.manualCloudFlowBindingSource.DataSource = typeof(DataVerseTrigger.Models.CloudFlows.ManualCloudFlow);
             // 
             // scheduledCloudFlowBindingSource
             // 
-            this.scheduledCloudFlowBindingSource.DataSource = typeof(Models.ScheduledCloudFlow);
+            this.scheduledCloudFlowBindingSource.DataSource = typeof(DataVerseTrigger.Models.ScheduledCloudFlow);
             // 
             // pnlDetails
             // 
@@ -212,7 +163,56 @@ namespace DataVerseTrigger.Controls.Grids
             this.filtersManual1.TabIcon = null;
             this.filtersManual1.TabIndex = 0;
             this.filtersManual1.ToolName = null;
-            this.filtersManual1.OnFilterApplied += new Controls.Filters.FiltersManual.FilterApplied(this.filtersManual1_OnFilterApplied);
+            this.filtersManual1.OnFilterApplied += new DataVerseTrigger.Controls.Filters.FiltersManual.FilterApplied(this.filtersManual1_OnFilterApplied);
+            // 
+            // NameCloudFlow
+            // 
+            this.NameCloudFlow.DataPropertyName = "Name";
+            this.NameCloudFlow.HeaderText = "Name";
+            this.NameCloudFlow.MinimumWidth = 8;
+            this.NameCloudFlow.Name = "NameCloudFlow";
+            this.NameCloudFlow.ReadOnly = true;
+            this.NameCloudFlow.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameCloudFlow.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.NameCloudFlow.Width = 150;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "StatusName";
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 8;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Width = 130;
+            // 
+            // Kind
+            // 
+            this.Kind.DataPropertyName = "Kind";
+            this.Kind.HeaderText = "Kind";
+            this.Kind.MinimumWidth = 8;
+            this.Kind.Name = "Kind";
+            this.Kind.ReadOnly = true;
+            this.Kind.Width = 150;
+            // 
+            // workflowidDataGridViewTextBoxColumn
+            // 
+            this.workflowidDataGridViewTextBoxColumn.DataPropertyName = "Workflowid";
+            this.workflowidDataGridViewTextBoxColumn.HeaderText = "Workflowid";
+            this.workflowidDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.workflowidDataGridViewTextBoxColumn.Name = "workflowidDataGridViewTextBoxColumn";
+            this.workflowidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.workflowidDataGridViewTextBoxColumn.Visible = false;
+            this.workflowidDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // workflowuniqueidDataGridViewTextBoxColumn
+            // 
+            this.workflowuniqueidDataGridViewTextBoxColumn.DataPropertyName = "Workflowuniqueid";
+            this.workflowuniqueidDataGridViewTextBoxColumn.HeaderText = "Workflowuniqueid";
+            this.workflowuniqueidDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.workflowuniqueidDataGridViewTextBoxColumn.Name = "workflowuniqueidDataGridViewTextBoxColumn";
+            this.workflowuniqueidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.workflowuniqueidDataGridViewTextBoxColumn.Visible = false;
+            this.workflowuniqueidDataGridViewTextBoxColumn.Width = 150;
             // 
             // ManualTriggerCloudFlows
             // 
@@ -220,6 +220,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlData);
             this.Controls.Add(this.pnlDetails);
+            this.Name = "ManualTriggerCloudFlows";
             this.Size = new System.Drawing.Size(1850, 1120);
             this.pnlData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGridScheduled)).EndInit();
@@ -243,11 +244,11 @@ namespace DataVerseTrigger.Controls.Grids
         private System.Windows.Forms.TabPage tabDetails;
         private System.Windows.Forms.PropertyGrid propertyGrid1;
         private System.Windows.Forms.BindingSource manualCloudFlowBindingSource;
-        private System.Windows.Forms.DataGridViewLinkColumn Name;
+        private Controls.Filters.FiltersManual filtersManual1;
+        private System.Windows.Forms.DataGridViewLinkColumn NameCloudFlow;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kind;
         private System.Windows.Forms.DataGridViewTextBoxColumn workflowidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn workflowuniqueidDataGridViewTextBoxColumn;
-        private Controls.Filters.FiltersManual filtersManual1;
     }
 }

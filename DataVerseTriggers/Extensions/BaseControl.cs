@@ -32,6 +32,7 @@ namespace DataVerseTrigger.Extensions
         
         public IOrganizationService Service
         {
+            
             set
             {
                 _service = value;

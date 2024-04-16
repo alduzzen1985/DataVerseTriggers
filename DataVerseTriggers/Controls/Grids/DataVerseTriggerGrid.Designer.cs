@@ -4,7 +4,7 @@ using DataVerseTrigger.Extensions;
 
 namespace DataVerseTrigger.Controls.Grids
 {
-    partial class DataVerseTrigger
+    partial class DataVerseTriggerGrid
     {
         /// <summary> 
         /// Required designer variable.
@@ -36,7 +36,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.dtGridDataVerse = new System.Windows.Forms.DataGridView();
             this.workflowuniqueidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workflowidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.NameCloudFlow = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entitynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.messageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,7 +52,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.tabDetails = new System.Windows.Forms.TabPage();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.tabFilter = new System.Windows.Forms.TabPage();
-            this.dataVerseFilters1 = new FiltersDataVerse();
+            this.dataVerseFilters1 = new DataVerseTrigger.Controls.Filters.FiltersDataVerse();
             this.pnlTab = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridDataVerse)).BeginInit();
@@ -74,7 +74,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.dtGridDataVerse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.workflowuniqueidDataGridViewTextBoxColumn,
             this.workflowidDataGridViewTextBoxColumn,
-            this.Name,
+            this.NameCloudFlow,
             this.Status,
             this.entitynameDataGridViewTextBoxColumn,
             this.messageDataGridViewTextBoxColumn,
@@ -118,14 +118,14 @@ namespace DataVerseTrigger.Controls.Grids
             this.workflowidDataGridViewTextBoxColumn.Visible = false;
             this.workflowidDataGridViewTextBoxColumn.Width = 150;
             // 
-            // Name
+            // NameCloudFlow
             // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Name";
-            this.Name.MinimumWidth = 8;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            this.Name.Width = 150;
+            this.NameCloudFlow.DataPropertyName = "Name";
+            this.NameCloudFlow.HeaderText = "Name";
+            this.NameCloudFlow.MinimumWidth = 8;
+            this.NameCloudFlow.Name = "NameCloudFlow";
+            this.NameCloudFlow.ReadOnly = true;
+            this.NameCloudFlow.Width = 150;
             // 
             // Status
             // 
@@ -202,7 +202,7 @@ namespace DataVerseTrigger.Controls.Grids
             // 
             // dataVerseCloudFlowBindingSource
             // 
-            this.dataVerseCloudFlowBindingSource.DataSource = typeof(DataVerseCloudFlow);
+            this.dataVerseCloudFlowBindingSource.DataSource = typeof(DataVerseTrigger.Models.DataVerseCloudFlow);
             // 
             // pnlData
             // 
@@ -265,6 +265,8 @@ namespace DataVerseTrigger.Controls.Grids
             // 
             // dataVerseFilters1
             // 
+            this.dataVerseFilters1.AutoSize = true;
+            this.dataVerseFilters1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dataVerseFilters1.ConnectionDetail = null;
             this.dataVerseFilters1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataVerseFilters1.Location = new System.Drawing.Point(3, 3);
@@ -287,11 +289,12 @@ namespace DataVerseTrigger.Controls.Grids
             this.pnlTab.Size = new System.Drawing.Size(1850, 1120);
             this.pnlTab.TabIndex = 3;
             // 
-            // DataVerseTrigger
+            // DataVerseTriggerGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlTab);
+            this.Name = "DataVerseTriggerGrid";
             this.Size = new System.Drawing.Size(1850, 1120);
             ((System.ComponentModel.ISupportInitialize)(this.dtGridDataVerse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataVerseCloudFlowBindingSource)).EndInit();
@@ -300,6 +303,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.tabCloudFlows.ResumeLayout(false);
             this.tabDetails.ResumeLayout(false);
             this.tabFilter.ResumeLayout(false);
+            this.tabFilter.PerformLayout();
             this.pnlTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -320,7 +324,7 @@ namespace DataVerseTrigger.Controls.Grids
         private System.Windows.Forms.PropertyGrid propertyGrid1;
         private System.Windows.Forms.DataGridViewTextBoxColumn workflowuniqueidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn workflowidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewLinkColumn Name;
+        private System.Windows.Forms.DataGridViewLinkColumn NameCloudFlow;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn entitynameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn messageDataGridViewTextBoxColumn;

@@ -35,10 +35,10 @@ namespace DataVerseTrigger.Controls.Filters
             this.lblMessage = new System.Windows.Forms.Label();
             this.pnlFilters = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.attributesSelector1 = new Controls.Forms.AttributesSelector();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblName = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.attributesSelector1 = new Controls.Forms.AttributesSelector();
             this.panel5 = new System.Windows.Forms.Panel();
             this.chkScope = new System.Windows.Forms.CheckedListBox();
             this.lblScope = new System.Windows.Forms.Label();
@@ -112,6 +112,16 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel6.Size = new System.Drawing.Size(450, 333);
             this.panel6.TabIndex = 3;
             // 
+            // attributesSelector1
+            // 
+            this.attributesSelector1.AutoSize = true;
+            this.attributesSelector1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.attributesSelector1.Location = new System.Drawing.Point(0, 87);
+            this.attributesSelector1.Name = "attributesSelector1";
+            this.attributesSelector1.Service = null;
+            this.attributesSelector1.Size = new System.Drawing.Size(450, 246);
+            this.attributesSelector1.TabIndex = 1;
+            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.lblName);
@@ -137,16 +147,6 @@ namespace DataVerseTrigger.Controls.Filters
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(380, 26);
             this.textBox1.TabIndex = 4;
-            // 
-            // attributesSelector1
-            // 
-            this.attributesSelector1.AutoSize = true;
-            this.attributesSelector1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.attributesSelector1.Location = new System.Drawing.Point(0, 87);
-            this.attributesSelector1.Name = "attributesSelector1";
-            this.attributesSelector1.Service = null;
-            this.attributesSelector1.Size = new System.Drawing.Size(450, 246);
-            this.attributesSelector1.TabIndex = 1;
             // 
             // panel5
             // 

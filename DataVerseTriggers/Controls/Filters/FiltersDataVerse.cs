@@ -21,14 +21,17 @@ namespace DataVerseTrigger.Controls.Filters
         {
             set
             {
-                attributesSelector1.PowerAppsTables = value;
+                //attributesSelector1.PowerAppsTables = value;
             }
         }
 
         public IOrganizationService Service
         {
-            set { attributesSelector1.Service = value; }
-            get { return attributesSelector1.Service; }
+            set { //attributesSelector1.Service = value; 
+            }
+            get {
+                return null;// return attributesSelector1.Service; 
+            }
         }
 
 
@@ -92,10 +95,10 @@ namespace DataVerseTrigger.Controls.Filters
             }
 
 
-            if (attributesSelector1.SelectedTable != "-")
-            {
-                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Entityname == attributesSelector1.SelectedTable).ToList();
-            }
+            //if (attributesSelector1.SelectedTable != "-")
+            //{
+            //    lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Entityname == attributesSelector1.SelectedTable).ToList();
+            //}
 
             
 
@@ -119,12 +122,12 @@ namespace DataVerseTrigger.Controls.Filters
         {
             
 
-            attributesSelector1.Clear();
-            txtFilterAttributes.Text = string.Empty;
-            txtFilterExpression.Text = string.Empty;
-            ClearItemSelected(chkMessages);
-            ClearItemSelected(chkRunAs);
-            ClearItemSelected(chkScope);
+            //attributesSelector1.Clear();
+            //txtFilterAttributes.Text = string.Empty;
+            //txtFilterExpression.Text = string.Empty;
+            //ClearItemSelected(chkMessages);
+            //ClearItemSelected(chkRunAs);
+            //ClearItemSelected(chkScope);
 
         }
     }

@@ -25,7 +25,7 @@ using XrmToolBox.Extensibility;
 
 namespace DataVerseTrigger
 {
-    public partial class DataVerseTrigger : PluginControlBase
+    public partial class DataVerseTriggerPlugin : PluginControlBase
     {
         private Settings mySettings;
 
@@ -38,7 +38,7 @@ namespace DataVerseTrigger
         private string _baseWorkflowUrl;
 
 
-        public DataVerseTrigger()
+        public DataVerseTriggerPlugin()
         {
             InitializeComponent();
         }

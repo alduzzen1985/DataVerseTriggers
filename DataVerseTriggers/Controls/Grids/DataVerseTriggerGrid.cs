@@ -10,7 +10,7 @@ using Microsoft.Xrm.Sdk;
 
 namespace DataVerseTrigger.Controls.Grids
 {
-    public partial class DataVerseTrigger : BaseControl
+    public partial class DataVerseTriggerGrid : BaseControl
     {
         private List<DataVerseCloudFlow> lstDataVerseTriggers;
 
@@ -35,7 +35,7 @@ namespace DataVerseTrigger.Controls.Grids
             set { dataVerseFilters1.Service = value; }
         }
 
-        public DataVerseTrigger()
+        public DataVerseTriggerGrid()
         {
             InitializeComponent();
             dataVerseFilters1.OnFilterApplied += DataVerseFilters1_filterApplied;

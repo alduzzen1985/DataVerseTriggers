@@ -25,7 +25,7 @@ namespace DataVerseTrigger
     {
         public override IXrmToolBoxPluginControl GetControl()
         {
-            return new DataVerseTrigger();
+            return new DataVerseTriggerPlugin();
         }
 
         /// <summary>

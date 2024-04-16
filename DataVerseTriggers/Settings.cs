@@ -19,7 +19,7 @@ namespace DataVerseTrigger
 
         public void test()
         {
-            DataVerseTrigger dtTrigger = new DataVerseTrigger();
+            DataVerseTriggerPlugin dtTrigger = new DataVerseTriggerPlugin();
             new BaseControl();
         }
     }
