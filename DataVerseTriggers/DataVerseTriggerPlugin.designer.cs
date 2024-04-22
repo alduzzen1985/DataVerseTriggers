@@ -51,15 +51,15 @@ namespace DataVerseTrigger
             this.pnlFlows = new System.Windows.Forms.Panel();
             this.tabPlugins = new System.Windows.Forms.TabControl();
             this.tabDataVerseTriggers = new System.Windows.Forms.TabPage();
-            this.cstControlDataverseTriggers = new Controls.Grids.DataVerseTriggerGrid();
             this.tabScheduled = new System.Windows.Forms.TabPage();
-            this.cstControlRecurrencyTriggers = new Controls.Grids.ScheduledTrigger();
             this.tabManual = new System.Windows.Forms.TabPage();
-            this.cstManualTrigger = new Controls.Grids.ManualTriggerCloudFlows();
             this.tabWorkflows = new System.Windows.Forms.TabPage();
-            this.cstControlWorkflowsTriggers = new Controls.Grids.WorkflowTrigger();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cstPluginTriggers1 = new Controls.Grids.PluginTriggers();
+            this.cstControlDataverseTriggers = new DataVerseTrigger.Controls.Grids.DataVerseTriggerGrid();
+            this.cstControlRecurrencyTriggers = new DataVerseTrigger.Controls.Grids.ScheduledTrigger();
+            this.cstManualTrigger = new DataVerseTrigger.Controls.Grids.ManualTriggerCloudFlows();
+            this.cstControlWorkflowsTriggers = new DataVerseTrigger.Controls.Grids.WorkflowTrigger();
+            this.cstPluginTriggers1 = new DataVerseTrigger.Controls.Grids.PluginTriggers();
             this.toolStripMenu.SuspendLayout();
             this.pnlFlows.SuspendLayout();
             this.tabPlugins.SuspendLayout();
@@ -225,6 +225,49 @@ namespace DataVerseTrigger
             this.tabDataVerseTriggers.Text = "DataVerse Tables Triggers";
             this.tabDataVerseTriggers.UseVisualStyleBackColor = true;
             // 
+            // tabScheduled
+            // 
+            this.tabScheduled.Controls.Add(this.cstControlRecurrencyTriggers);
+            this.tabScheduled.Location = new System.Drawing.Point(4, 29);
+            this.tabScheduled.Name = "tabScheduled";
+            this.tabScheduled.Padding = new System.Windows.Forms.Padding(3);
+            this.tabScheduled.Size = new System.Drawing.Size(2333, 801);
+            this.tabScheduled.TabIndex = 1;
+            this.tabScheduled.Text = "Scheduled";
+            this.tabScheduled.UseVisualStyleBackColor = true;
+            // 
+            // tabManual
+            // 
+            this.tabManual.Controls.Add(this.cstManualTrigger);
+            this.tabManual.Location = new System.Drawing.Point(4, 29);
+            this.tabManual.Name = "tabManual";
+            this.tabManual.Padding = new System.Windows.Forms.Padding(3);
+            this.tabManual.Size = new System.Drawing.Size(2333, 801);
+            this.tabManual.TabIndex = 4;
+            this.tabManual.Text = "Manual";
+            this.tabManual.UseVisualStyleBackColor = true;
+            // 
+            // tabWorkflows
+            // 
+            this.tabWorkflows.Controls.Add(this.cstControlWorkflowsTriggers);
+            this.tabWorkflows.Location = new System.Drawing.Point(4, 29);
+            this.tabWorkflows.Name = "tabWorkflows";
+            this.tabWorkflows.Size = new System.Drawing.Size(2333, 801);
+            this.tabWorkflows.TabIndex = 2;
+            this.tabWorkflows.Text = "Workflows";
+            this.tabWorkflows.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.cstPluginTriggers1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(2333, 801);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Plugins";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // cstControlDataverseTriggers
             // 
             this.cstControlDataverseTriggers.ConnectionDetail = null;
@@ -233,22 +276,12 @@ namespace DataVerseTrigger
             this.cstControlDataverseTriggers.LstDataVerseTriggers = null;
             this.cstControlDataverseTriggers.Name = "cstControlDataverseTriggers";
             this.cstControlDataverseTriggers.PluginIcon = null;
+            this.cstControlDataverseTriggers.Service = null;
             this.cstControlDataverseTriggers.Size = new System.Drawing.Size(2327, 799);
             this.cstControlDataverseTriggers.TabIcon = null;
             this.cstControlDataverseTriggers.TabIndex = 0;
             this.cstControlDataverseTriggers.ToolName = null;
-            this.cstControlDataverseTriggers.OnProcessSelected += new Extensions.BaseControl.ProcessSelected(this.CstControlDataverseTriggers_OnProcessSelected);
-            // 
-            // tabScheduled
-            // 
-            this.tabScheduled.Controls.Add(this.cstControlRecurrencyTriggers);
-            this.tabScheduled.Location = new System.Drawing.Point(4, 29);
-            this.tabScheduled.Name = "tabScheduled";
-            this.tabScheduled.Padding = new System.Windows.Forms.Padding(3);
-            this.tabScheduled.Size = new System.Drawing.Size(2333, 805);
-            this.tabScheduled.TabIndex = 1;
-            this.tabScheduled.Text = "Scheduled";
-            this.tabScheduled.UseVisualStyleBackColor = true;
+            this.cstControlDataverseTriggers.OnProcessSelected += new DataVerseTrigger.Extensions.BaseControl.ProcessSelected(this.CstControlDataverseTriggers_OnProcessSelected);
             // 
             // cstControlRecurrencyTriggers
             // 
@@ -258,22 +291,12 @@ namespace DataVerseTrigger
             this.cstControlRecurrencyTriggers.LstScheduledCloudFlows = null;
             this.cstControlRecurrencyTriggers.Name = "cstControlRecurrencyTriggers";
             this.cstControlRecurrencyTriggers.PluginIcon = null;
-            this.cstControlRecurrencyTriggers.Size = new System.Drawing.Size(2327, 799);
+            this.cstControlRecurrencyTriggers.Service = null;
+            this.cstControlRecurrencyTriggers.Size = new System.Drawing.Size(2327, 795);
             this.cstControlRecurrencyTriggers.TabIcon = null;
             this.cstControlRecurrencyTriggers.TabIndex = 0;
             this.cstControlRecurrencyTriggers.ToolName = null;
-            this.cstControlRecurrencyTriggers.OnProcessSelected += new Extensions.BaseControl.ProcessSelected(this.CstControlDataverseTriggers_OnProcessSelected);
-            // 
-            // tabManual
-            // 
-            this.tabManual.Controls.Add(this.cstManualTrigger);
-            this.tabManual.Location = new System.Drawing.Point(4, 29);
-            this.tabManual.Name = "tabManual";
-            this.tabManual.Padding = new System.Windows.Forms.Padding(3);
-            this.tabManual.Size = new System.Drawing.Size(2333, 805);
-            this.tabManual.TabIndex = 4;
-            this.tabManual.Text = "Manual";
-            this.tabManual.UseVisualStyleBackColor = true;
+            this.cstControlRecurrencyTriggers.OnProcessSelected += new DataVerseTrigger.Extensions.BaseControl.ProcessSelected(this.CstControlDataverseTriggers_OnProcessSelected);
             // 
             // cstManualTrigger
             // 
@@ -283,21 +306,12 @@ namespace DataVerseTrigger
             this.cstManualTrigger.LstScheduledCloudFlows = null;
             this.cstManualTrigger.Name = "cstManualTrigger";
             this.cstManualTrigger.PluginIcon = null;
-            this.cstManualTrigger.Size = new System.Drawing.Size(2327, 799);
+            this.cstManualTrigger.Service = null;
+            this.cstManualTrigger.Size = new System.Drawing.Size(2327, 795);
             this.cstManualTrigger.TabIcon = null;
             this.cstManualTrigger.TabIndex = 0;
             this.cstManualTrigger.ToolName = null;
-            this.cstManualTrigger.OnProcessSelected += new Extensions.BaseControl.ProcessSelected(this.CstControlDataverseTriggers_OnProcessSelected);
-            // 
-            // tabWorkflows
-            // 
-            this.tabWorkflows.Controls.Add(this.cstControlWorkflowsTriggers);
-            this.tabWorkflows.Location = new System.Drawing.Point(4, 29);
-            this.tabWorkflows.Name = "tabWorkflows";
-            this.tabWorkflows.Size = new System.Drawing.Size(2333, 805);
-            this.tabWorkflows.TabIndex = 2;
-            this.tabWorkflows.Text = "Workflows";
-            this.tabWorkflows.UseVisualStyleBackColor = true;
+            this.cstManualTrigger.OnProcessSelected += new DataVerseTrigger.Extensions.BaseControl.ProcessSelected(this.CstControlDataverseTriggers_OnProcessSelected);
             // 
             // cstControlWorkflowsTriggers
             // 
@@ -308,23 +322,12 @@ namespace DataVerseTrigger
             this.cstControlWorkflowsTriggers.Name = "cstControlWorkflowsTriggers";
             this.cstControlWorkflowsTriggers.PluginIcon = null;
             this.cstControlWorkflowsTriggers.Service = null;
-            this.cstControlWorkflowsTriggers.Size = new System.Drawing.Size(2333, 805);
+            this.cstControlWorkflowsTriggers.Size = new System.Drawing.Size(2333, 801);
             this.cstControlWorkflowsTriggers.SolutionId = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.cstControlWorkflowsTriggers.TabIcon = null;
             this.cstControlWorkflowsTriggers.TabIndex = 0;
             this.cstControlWorkflowsTriggers.ToolName = null;
-            this.cstControlWorkflowsTriggers.OnProcessSelected += new Extensions.BaseControl.ProcessSelected(this.CstControlDataverseTriggers_OnProcessSelected);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.cstPluginTriggers1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(2333, 805);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Plugins";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.cstControlWorkflowsTriggers.OnProcessSelected += new DataVerseTrigger.Extensions.BaseControl.ProcessSelected(this.CstControlDataverseTriggers_OnProcessSelected);
             // 
             // cstPluginTriggers1
             // 
@@ -333,18 +336,18 @@ namespace DataVerseTrigger
             this.cstPluginTriggers1.LstPlugins = null;
             this.cstPluginTriggers1.Name = "cstPluginTriggers1";
             this.cstPluginTriggers1.Service = null;
-            this.cstPluginTriggers1.Size = new System.Drawing.Size(2327, 799);
+            this.cstPluginTriggers1.Size = new System.Drawing.Size(2327, 795);
             this.cstPluginTriggers1.SolutionId = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.cstPluginTriggers1.TabIndex = 0;
             // 
-            // DataVerseTrigger
+            // DataVerseTriggerPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlFlows);
             this.Controls.Add(this.toolStripMenu);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "DataVerseTrigger";
+            this.Name = "DataVerseTriggerPlugin";
             this.Size = new System.Drawing.Size(2341, 872);
             this.ConnectionUpdated += new XrmToolBox.Extensibility.PluginControlBase.ConnectionUpdatedHandler(this.MyPluginControl_ConnectionUpdated);
             this.Load += new System.EventHandler(this.MyPluginControl_Load);

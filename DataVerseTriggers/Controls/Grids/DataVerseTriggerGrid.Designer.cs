@@ -94,8 +94,8 @@ namespace DataVerseTrigger.Controls.Grids
             this.dtGridDataVerse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridDataVerse.Size = new System.Drawing.Size(1400, 1120);
             this.dtGridDataVerse.TabIndex = 0;
+            this.dtGridDataVerse.DataSourceChanged += new System.EventHandler(this.dtGridDataVerse_DataSourceChanged);
             this.dtGridDataVerse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridDataVerse_CellClick);
-            this.dtGridDataVerse.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtGridDataVerse_CellFormatting);
             this.dtGridDataVerse.SelectionChanged += new System.EventHandler(this.dtGridDataVerse_SelectionChanged);
             // 
             // workflowuniqueidDataGridViewTextBoxColumn

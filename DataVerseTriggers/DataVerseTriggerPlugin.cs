@@ -556,22 +556,22 @@ namespace DataVerseTrigger
                         cstControlDataverseTriggers.LstDataVerseTriggers = lsDataVerseFlows;
                         cstControlDataverseTriggers.RefreshGrid();
 
-                        cstManualTrigger.Service = this.Service;
-                        cstManualTrigger.LstScheduledCloudFlows = lsManualCloudFlows;
-                        cstManualTrigger.RefreshGrid();
+                        //cstManualTrigger.Service = this.Service;
+                        //cstManualTrigger.LstScheduledCloudFlows = lsManualCloudFlows;
+                        //cstManualTrigger.RefreshGrid();
 
 
-                        cstControlRecurrencyTriggers.Service = this.Service;
-                        cstControlRecurrencyTriggers.LstScheduledCloudFlows = lsScheduledCloudFlows;
-                        cstControlRecurrencyTriggers.RefreshGrid();
+                        //cstControlRecurrencyTriggers.Service = this.Service;
+                        //cstControlRecurrencyTriggers.LstScheduledCloudFlows = lsScheduledCloudFlows;
+                        //cstControlRecurrencyTriggers.RefreshGrid();
 
-                        cstControlWorkflowsTriggers.SolutionId = solutionId;
-                        cstControlWorkflowsTriggers.Service = this.Service;
-                        cstControlWorkflowsTriggers.RefreshGrid();
+                        //cstControlWorkflowsTriggers.SolutionId = solutionId;
+                        //cstControlWorkflowsTriggers.Service = this.Service;
+                        //cstControlWorkflowsTriggers.RefreshGrid();
 
-                        cstPluginTriggers1.SolutionId = solutionId;
-                        cstPluginTriggers1.Service = this.Service;
-                        cstPluginTriggers1.RefreshGrid();
+                        //cstPluginTriggers1.SolutionId = solutionId;
+                        //cstPluginTriggers1.Service = this.Service;
+                        //cstPluginTriggers1.RefreshGrid();
 
                     }
 

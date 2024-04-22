@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using DataVerseTrigger.Enums;
 using DataVerseTrigger.Extensions;
@@ -48,7 +49,12 @@ namespace DataVerseTrigger.Controls.Grids
 
         public void RefreshGrid()
         {
-            dtGridDataVerse.DataSource = lstDataVerseTriggers;
+            BindingSource source = new BindingSource();
+            source.DataSource = lstDataVerseTriggers; 
+
+            dtGridDataVerse.DataSource = source;
+            dtGridDataVerse.Update();
+            dtGridDataVerse.Refresh();
         }
 
         private void dtGridDataVerse_SelectionChanged(object sender, EventArgs e)
@@ -95,7 +101,7 @@ namespace DataVerseTrigger.Controls.Grids
                 e.CellStyle.ForeColor = Color.Green;
             }
 
-            
+
 
 
 
@@ -103,16 +109,29 @@ namespace DataVerseTrigger.Controls.Grids
 
         private void dtGridDataVerse_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            var flow = (DataVerseCloudFlow)dtGridDataVerse.Rows[e.RowIndex].DataBoundItem;
-            var column = dtGridDataVerse.Columns[e.ColumnIndex];
-            var columnName = column.Name;
 
-     
-            if (flow!=null && columnName == "Status")
+        }
+
+        private void dtGridDataVerse_DataSourceChanged(object sender, EventArgs e)
+        {
+
+            foreach (DataGridViewRow row in dtGridDataVerse.Rows)
             {
-                e.CellStyle.ForeColor = flow.Status == 2 ? Color.Green : Color.Red;
-                
+                var flow = (DataVerseCloudFlow)row.DataBoundItem;
+                row.Cells["Status"].Style.ForeColor = flow.Status == 2 ? Color.Green : Color.Red;
+
             }
+
+            //var flow = (DataVerseCloudFlow)dtGridDataVerse.Rows[e.RowIndex].DataBoundItem;
+            //var column = dtGridDataVerse.Columns[e.ColumnIndex];
+            //var columnName = column.Name;
+
+
+            //if (flow != null && columnName == "Status")
+            //{
+            //    e.CellStyle.ForeColor = flow.Status == 2 ? Color.Green : Color.Red;
+
+            //}
         }
     }
 }
