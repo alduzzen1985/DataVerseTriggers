@@ -314,6 +314,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.lnkClearFilters.TabIndex = 26;
             this.lnkClearFilters.TabStop = true;
             this.lnkClearFilters.Text = "Remove Filters";
+            this.lnkClearFilters.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkClearFilters_LinkClicked);
             // 
             // FiltersDataVerse
             // 

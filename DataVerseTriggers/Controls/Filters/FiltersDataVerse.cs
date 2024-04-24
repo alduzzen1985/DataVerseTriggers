@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using DataVerseTrigger.Constants;
+using DataVerseTrigger.Controls.Forms;
 using DataVerseTrigger.Extensions;
 using DataVerseTrigger.Models;
 using Microsoft.Xrm.Sdk;
@@ -21,16 +22,19 @@ namespace DataVerseTrigger.Controls.Filters
         {
             set
             {
-                //attributesSelector1.PowerAppsTables = value;
+                attributesSelector1.PowerAppsTables = value;
             }
         }
 
         public IOrganizationService Service
         {
-            set { //attributesSelector1.Service = value; 
+            set
+            {
+                attributesSelector1.Service = value;
             }
-            get {
-                return null;// return attributesSelector1.Service; 
+            get
+            {
+                return attributesSelector1.Service;
             }
         }
 
@@ -65,7 +69,7 @@ namespace DataVerseTrigger.Controls.Filters
 
             if (!string.IsNullOrEmpty(txtName.Text))
             {
-                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Name.Contains(txtName.Text)).ToList();
+                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Name.ToUpper().Contains(txtName.Text.ToUpper())).ToList();
             }
 
             if (checkedItemsMessages.Length > 0)
@@ -95,12 +99,16 @@ namespace DataVerseTrigger.Controls.Filters
             }
 
 
-            //if (attributesSelector1.SelectedTable != "-")
-            //{
-            //    lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Entityname == attributesSelector1.SelectedTable).ToList();
-            //}
+            if (attributesSelector1.SelectedTable != "-")
+            {
+                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Entityname == attributesSelector1.SelectedTable).ToList();
+            }
 
-            
+            if (attributesSelector1.SelectedAttributes.Any())
+            {
+                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Filteringattributes.Split(',').Intersect(attributesSelector1.SelectedAttributes).Any()).ToList();
+            }
+
 
             if (!string.IsNullOrEmpty(txtFilterAttributes.Text))
             {
@@ -120,15 +128,12 @@ namespace DataVerseTrigger.Controls.Filters
 
         private void lnkClearFilters_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
-
-            //attributesSelector1.Clear();
-            //txtFilterAttributes.Text = string.Empty;
-            //txtFilterExpression.Text = string.Empty;
-            //ClearItemSelected(chkMessages);
-            //ClearItemSelected(chkRunAs);
-            //ClearItemSelected(chkScope);
-
+            attributesSelector1.Clear();
+            txtFilterAttributes.Text = string.Empty;
+            txtFilterExpression.Text = string.Empty;
+            ClearItemSelected(chkMessages);
+            ClearItemSelected(chkRunAs);
+            ClearItemSelected(chkScope);
         }
     }
 }

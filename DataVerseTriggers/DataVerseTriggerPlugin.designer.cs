@@ -90,7 +90,7 @@ namespace DataVerseTrigger
             this.lblYouMustConnect});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(2341, 34);
+            this.toolStripMenu.Size = new System.Drawing.Size(2341, 38);
             this.toolStripMenu.TabIndex = 4;
             this.toolStripMenu.Text = "toolStrip1";
             // 
@@ -99,7 +99,7 @@ namespace DataVerseTrigger
             this.tsbClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbClose.Image = ((System.Drawing.Image)(resources.GetObject("tsbClose.Image")));
             this.tsbClose.Name = "tsbClose";
-            this.tsbClose.Size = new System.Drawing.Size(34, 29);
+            this.tsbClose.Size = new System.Drawing.Size(34, 33);
             this.tsbClose.Text = "Close this tool";
             this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
             // 
@@ -195,9 +195,9 @@ namespace DataVerseTrigger
             // 
             this.pnlFlows.Controls.Add(this.tabPlugins);
             this.pnlFlows.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFlows.Location = new System.Drawing.Point(0, 34);
+            this.pnlFlows.Location = new System.Drawing.Point(0, 38);
             this.pnlFlows.Name = "pnlFlows";
-            this.pnlFlows.Size = new System.Drawing.Size(2341, 838);
+            this.pnlFlows.Size = new System.Drawing.Size(2341, 834);
             this.pnlFlows.TabIndex = 6;
             // 
             // tabPlugins
@@ -211,7 +211,7 @@ namespace DataVerseTrigger
             this.tabPlugins.Location = new System.Drawing.Point(0, 0);
             this.tabPlugins.Name = "tabPlugins";
             this.tabPlugins.SelectedIndex = 0;
-            this.tabPlugins.Size = new System.Drawing.Size(2341, 838);
+            this.tabPlugins.Size = new System.Drawing.Size(2341, 834);
             this.tabPlugins.TabIndex = 0;
             // 
             // tabDataVerseTriggers
@@ -220,7 +220,7 @@ namespace DataVerseTrigger
             this.tabDataVerseTriggers.Location = new System.Drawing.Point(4, 29);
             this.tabDataVerseTriggers.Name = "tabDataVerseTriggers";
             this.tabDataVerseTriggers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDataVerseTriggers.Size = new System.Drawing.Size(2333, 805);
+            this.tabDataVerseTriggers.Size = new System.Drawing.Size(2333, 801);
             this.tabDataVerseTriggers.TabIndex = 0;
             this.tabDataVerseTriggers.Text = "DataVerse Tables Triggers";
             this.tabDataVerseTriggers.UseVisualStyleBackColor = true;
@@ -277,7 +277,7 @@ namespace DataVerseTrigger
             this.cstControlDataverseTriggers.Name = "cstControlDataverseTriggers";
             this.cstControlDataverseTriggers.PluginIcon = null;
             this.cstControlDataverseTriggers.Service = null;
-            this.cstControlDataverseTriggers.Size = new System.Drawing.Size(2327, 799);
+            this.cstControlDataverseTriggers.Size = new System.Drawing.Size(2327, 795);
             this.cstControlDataverseTriggers.TabIcon = null;
             this.cstControlDataverseTriggers.TabIndex = 0;
             this.cstControlDataverseTriggers.ToolName = null;

@@ -78,7 +78,7 @@ namespace DataVerseTrigger.Controls.Grids
 
             switch (dtGridDataVerse.Columns[e.ColumnIndex].Name)
             {
-                case "Name":
+                case "NameCloudFlow":
                     SelectProcess(flowRun.Workflowuniqueid, ProcessType.CloudFlow);
                     break;
             }

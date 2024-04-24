@@ -37,7 +37,7 @@ namespace DataVerseTrigger.Controls.Grids
 
         private void dtGridScheduled_SelectionChanged(object sender, EventArgs e)
         {
-            if (dtGridScheduled.SelectedRows.Count == 1)
+            if (dtGridScheduled.SelectedRows.Count == 1 && lsManualCloudFlows.Count > 0)
             {
                 ManualCloudFlow selectedRow = dtGridScheduled.SelectedRows[0].DataBoundItem as ManualCloudFlow;
                 propertyGrid1.SelectedObject = selectedRow;
@@ -53,7 +53,7 @@ namespace DataVerseTrigger.Controls.Grids
 
             switch (dtGridScheduled.Columns[e.ColumnIndex].Name)
             {
-                case "Name":
+                case "NameCloudFlow":
                     SelectProcess(flowRun.Workflowuniqueid, ProcessType.CloudFlow);
                     break;
             }
