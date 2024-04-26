@@ -54,6 +54,11 @@ namespace DataVerseTrigger.Controls.Filters
             chkRunAs.DataSource = ComboValues.RUN_AS;
             chkRunAs.DisplayMember = "Description";
             chkRunAs.ValueMember = "Value";
+
+            chkStatus.DataSource = ComboValues.WF_STATUS;
+            chkStatus.DisplayMember = "Description";
+            chkStatus.ValueMember = "Value";
+
         }
 
         private void btnApplyFilter_Click(object sender, EventArgs e)
@@ -62,6 +67,7 @@ namespace DataVerseTrigger.Controls.Filters
             var checkedItemsMessages = chkMessages.CheckedItems.OfType<BindingItem>().ToArray();
             var checkedItemsScope = chkScope.CheckedItems.OfType<BindingItem>().ToArray();
             var checkedItemsRunAs = chkRunAs.CheckedItems.OfType<BindingItem>().ToArray();
+            var checkedStateCodes = chkStatus.CheckedItems.OfType<BindingItem>().ToArray();
 
 
             List<DataVerseCloudFlow> lstDataVerseTriggersFiltered = LstDataVerseTriggers;
@@ -112,12 +118,19 @@ namespace DataVerseTrigger.Controls.Filters
 
             if (!string.IsNullOrEmpty(txtFilterAttributes.Text))
             {
-                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Filteringattributes.Contains(txtFilterAttributes.Text)).ToList();
+                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Filteringattributes.ToUpper().Contains(txtFilterAttributes.Text.ToUpper())).ToList();
             }
 
             if (!string.IsNullOrEmpty(txtFilterExpression.Text))
             {
-                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Filterexpression.Contains(txtFilterExpression.Text)).ToList();
+                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered.Where(x => x.Filterexpression.ToUpper().Contains(txtFilterExpression.Text.ToUpper())).ToList();
+            }
+
+            if (checkedStateCodes.Length > 0)
+            {
+                lstDataVerseTriggersFiltered = lstDataVerseTriggersFiltered
+                    .Where(x => checkedStateCodes.Where(si => int.Parse(si.Value) == x.Status).Any())
+                .ToList();
             }
 
             if (OnFilterApplied != null)

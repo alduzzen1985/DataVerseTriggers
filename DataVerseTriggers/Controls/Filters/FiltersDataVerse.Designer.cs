@@ -31,6 +31,9 @@ namespace DataVerseTrigger.Controls.Filters
         private void InitializeComponent()
         {
             this.pnlFilters = new System.Windows.Forms.Panel();
+            this.pnlStatus = new System.Windows.Forms.Panel();
+            this.chkStatus = new System.Windows.Forms.CheckedListBox();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.chkMessages = new System.Windows.Forms.CheckedListBox();
             this.lblMessage = new System.Windows.Forms.Label();
@@ -56,6 +59,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel9 = new System.Windows.Forms.Panel();
             this.lnkClearFilters = new System.Windows.Forms.LinkLabel();
             this.pnlFilters.SuspendLayout();
+            this.pnlStatus.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -70,6 +74,7 @@ namespace DataVerseTrigger.Controls.Filters
             // pnlFilters
             // 
             this.pnlFilters.AutoScroll = true;
+            this.pnlFilters.Controls.Add(this.pnlStatus);
             this.pnlFilters.Controls.Add(this.panel5);
             this.pnlFilters.Controls.Add(this.panel4);
             this.pnlFilters.Controls.Add(this.panel3);
@@ -83,6 +88,35 @@ namespace DataVerseTrigger.Controls.Filters
             this.pnlFilters.Size = new System.Drawing.Size(450, 1001);
             this.pnlFilters.TabIndex = 12;
             // 
+            // pnlStatus
+            // 
+            this.pnlStatus.Controls.Add(this.chkStatus);
+            this.pnlStatus.Controls.Add(this.lblStatus);
+            this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlStatus.Location = new System.Drawing.Point(0, 995);
+            this.pnlStatus.Name = "pnlStatus";
+            this.pnlStatus.Size = new System.Drawing.Size(424, 100);
+            this.pnlStatus.TabIndex = 29;
+            // 
+            // chkStatus
+            // 
+            this.chkStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.chkStatus.FormattingEnabled = true;
+            this.chkStatus.Location = new System.Drawing.Point(0, 20);
+            this.chkStatus.Name = "chkStatus";
+            this.chkStatus.Size = new System.Drawing.Size(424, 73);
+            this.chkStatus.TabIndex = 20;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(56, 20);
+            this.lblStatus.TabIndex = 19;
+            this.lblStatus.Text = "Status";
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.chkMessages);
@@ -90,7 +124,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 783);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(450, 212);
+            this.panel5.Size = new System.Drawing.Size(424, 212);
             this.panel5.TabIndex = 23;
             // 
             // chkMessages
@@ -99,7 +133,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.chkMessages.FormattingEnabled = true;
             this.chkMessages.Location = new System.Drawing.Point(0, 20);
             this.chkMessages.Name = "chkMessages";
-            this.chkMessages.Size = new System.Drawing.Size(450, 188);
+            this.chkMessages.Size = new System.Drawing.Size(424, 188);
             this.chkMessages.TabIndex = 11;
             // 
             // lblMessage
@@ -119,7 +153,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 657);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(450, 126);
+            this.panel4.Size = new System.Drawing.Size(424, 126);
             this.panel4.TabIndex = 22;
             // 
             // chkScope
@@ -128,7 +162,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.chkScope.FormattingEnabled = true;
             this.chkScope.Location = new System.Drawing.Point(0, 20);
             this.chkScope.Name = "chkScope";
-            this.chkScope.Size = new System.Drawing.Size(450, 96);
+            this.chkScope.Size = new System.Drawing.Size(424, 96);
             this.chkScope.TabIndex = 16;
             // 
             // lblScope
@@ -148,7 +182,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 527);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(450, 130);
+            this.panel3.Size = new System.Drawing.Size(424, 130);
             this.panel3.TabIndex = 21;
             // 
             // chkRunAs
@@ -157,7 +191,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.chkRunAs.FormattingEnabled = true;
             this.chkRunAs.Location = new System.Drawing.Point(0, 20);
             this.chkRunAs.Name = "chkRunAs";
-            this.chkRunAs.Size = new System.Drawing.Size(450, 96);
+            this.chkRunAs.Size = new System.Drawing.Size(424, 96);
             this.chkRunAs.TabIndex = 24;
             // 
             // lblRunAs
@@ -177,7 +211,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 466);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(450, 61);
+            this.panel2.Size = new System.Drawing.Size(424, 61);
             this.panel2.TabIndex = 18;
             // 
             // txtFilterExpression
@@ -185,7 +219,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.txtFilterExpression.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtFilterExpression.Location = new System.Drawing.Point(0, 20);
             this.txtFilterExpression.Name = "txtFilterExpression";
-            this.txtFilterExpression.Size = new System.Drawing.Size(450, 26);
+            this.txtFilterExpression.Size = new System.Drawing.Size(424, 26);
             this.txtFilterExpression.TabIndex = 13;
             // 
             // lblFilterExpression
@@ -205,7 +239,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 402);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 64);
+            this.panel1.Size = new System.Drawing.Size(424, 64);
             this.panel1.TabIndex = 17;
             // 
             // txtFilterAttributes
@@ -213,7 +247,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.txtFilterAttributes.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtFilterAttributes.Location = new System.Drawing.Point(0, 20);
             this.txtFilterAttributes.Name = "txtFilterAttributes";
-            this.txtFilterAttributes.Size = new System.Drawing.Size(450, 26);
+            this.txtFilterAttributes.Size = new System.Drawing.Size(424, 26);
             this.txtFilterAttributes.TabIndex = 15;
             // 
             // lblFilterAttributes
@@ -234,7 +268,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 62);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(450, 340);
+            this.panel6.Size = new System.Drawing.Size(424, 340);
             this.panel6.TabIndex = 24;
             // 
             // attributesSelector1
@@ -244,7 +278,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.attributesSelector1.Location = new System.Drawing.Point(0, 0);
             this.attributesSelector1.Name = "attributesSelector1";
             this.attributesSelector1.Service = null;
-            this.attributesSelector1.Size = new System.Drawing.Size(450, 340);
+            this.attributesSelector1.Size = new System.Drawing.Size(424, 340);
             this.attributesSelector1.TabIndex = 29;
             // 
             // panel7
@@ -254,7 +288,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(450, 62);
+            this.panel7.Size = new System.Drawing.Size(424, 62);
             this.panel7.TabIndex = 28;
             // 
             // txtName
@@ -262,7 +296,7 @@ namespace DataVerseTrigger.Controls.Filters
             this.txtName.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtName.Location = new System.Drawing.Point(0, 20);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(450, 26);
+            this.txtName.Size = new System.Drawing.Size(424, 26);
             this.txtName.TabIndex = 4;
             // 
             // lblName
@@ -326,6 +360,8 @@ namespace DataVerseTrigger.Controls.Filters
             this.Name = "FiltersDataVerse";
             this.Size = new System.Drawing.Size(450, 1079);
             this.pnlFilters.ResumeLayout(false);
+            this.pnlStatus.ResumeLayout(false);
+            this.pnlStatus.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -373,5 +409,8 @@ namespace DataVerseTrigger.Controls.Filters
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.LinkLabel lnkClearFilters;
+        private System.Windows.Forms.Panel pnlStatus;
+        private System.Windows.Forms.CheckedListBox chkStatus;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

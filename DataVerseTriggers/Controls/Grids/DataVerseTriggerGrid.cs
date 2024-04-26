@@ -40,6 +40,12 @@ namespace DataVerseTrigger.Controls.Grids
         {
             InitializeComponent();
             dataVerseFilters1.OnFilterApplied += DataVerseFilters1_filterApplied;
+            dtGridDataVerse.DataError += DtGridDataVerse_DataError;
+        }
+
+        private void DtGridDataVerse_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            
         }
 
         private void DataVerseFilters1_filterApplied(List<DataVerseCloudFlow> LstDataVerseTriggers)
@@ -49,8 +55,13 @@ namespace DataVerseTrigger.Controls.Grids
 
         public void RefreshGrid()
         {
+
+            dtGridDataVerse.DataSource = null;
+            
             BindingSource source = new BindingSource();
-            source.DataSource = lstDataVerseTriggers; 
+            source.DataSource = lstDataVerseTriggers;
+
+
 
             dtGridDataVerse.DataSource = source;
             dtGridDataVerse.Update();

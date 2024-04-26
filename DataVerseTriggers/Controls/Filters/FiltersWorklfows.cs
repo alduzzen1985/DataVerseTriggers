@@ -24,7 +24,9 @@ namespace DataVerseTrigger.Controls.Filters
             Mode[] modes,
             Scope[] scopes,
             int? tableObjectCode,
-            bool isOnDemand);
+            bool isOnDemand,
+            int[] status
+            );
 
 
         public event FilterApplied OnFilterApplied;
@@ -70,6 +72,10 @@ namespace DataVerseTrigger.Controls.Filters
             chkScope.DisplayMember = "Description";
             chkScope.ValueMember = "Value";
 
+            chkStatus.DataSource = ComboValues.WF_STATUS;
+            chkStatus.DisplayMember = "Description";
+            chkStatus.ValueMember = "Value";
+
             attributesSelector1.Dock = DockStyle.Fill;
 
         }
@@ -81,6 +87,9 @@ namespace DataVerseTrigger.Controls.Filters
             var checkedItemsMessages = chkEvents.CheckedItems.OfType<BindingItem>().ToArray();
             var checkedItemsScope = chkScope.CheckedItems.OfType<BindingItem>().ToArray();
             var checkedItemsMode = chkLstMode.CheckedItems.OfType<BindingItem>().ToArray();
+            int[] checkedStatus = chkStatus.CheckedItems.OfType<BindingItem>().ToArray().Select(x => Int32.Parse(x.Value)).ToArray();
+
+
 
             bool isCreate = checkedItemsMessages.Where(x => x.Value == "Create").Any();
             bool isDelete = checkedItemsMessages.Where(x => x.Value == "Delete").Any();
@@ -95,7 +104,7 @@ namespace DataVerseTrigger.Controls.Filters
 
             if (OnFilterApplied != null)
             {
-                OnFilterApplied(textBox1.Text, isCreate, isDelete, true, isAssign, isStatusChange, attributesSelector1.SelectedAttributes, modes, scopes, tableObjectCode, chkOnDemand.Checked);
+                OnFilterApplied(textBox1.Text, isCreate, isDelete, true, isAssign, isStatusChange, attributesSelector1.SelectedAttributes, modes, scopes, tableObjectCode, chkOnDemand.Checked, checkedStatus);
             }
 
         }

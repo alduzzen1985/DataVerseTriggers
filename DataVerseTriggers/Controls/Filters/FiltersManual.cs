@@ -39,7 +39,10 @@ namespace DataVerseTrigger.Controls.Filters
             chkKind.DisplayMember = "Description";
             chkKind.ValueMember = "Value";
 
-        
+
+            chkStatus.DataSource = ComboValues.WF_STATUS;
+            chkStatus.DisplayMember = "Description";
+            chkStatus.ValueMember = "Value";
 
         }
 
@@ -48,6 +51,8 @@ namespace DataVerseTrigger.Controls.Filters
             if (LstManualFlows == null) return;
 
             var checkedItemsKinds = chkKind.CheckedItems.OfType<BindingItem>().ToArray();
+            var checkedStateCodes = chkStatus.CheckedItems.OfType<BindingItem>().ToArray();
+
 
 
             List<ManualCloudFlow> lstScheduledFlowsFiltered = LstManualFlows;
@@ -55,7 +60,7 @@ namespace DataVerseTrigger.Controls.Filters
 
             if (!string.IsNullOrEmpty(txtName.Text))
             {
-                lstScheduledFlowsFiltered = lstScheduledFlowsFiltered.Where(x => x.Name.Contains(txtName.Text)).ToList();
+                lstScheduledFlowsFiltered = lstScheduledFlowsFiltered.Where(x => x.Name.ToUpper().Contains(txtName.Text.ToUpper())).ToList();
             }
 
             if (checkedItemsKinds.Length > 0)
@@ -64,8 +69,15 @@ namespace DataVerseTrigger.Controls.Filters
                     .Where(x => checkedItemsKinds.Where(si => x.Kind.Contains(si.Value)).Any())
                 .ToList();
             }
-            
-           
+
+            if (checkedStateCodes.Length > 0)
+            {
+                lstScheduledFlowsFiltered = lstScheduledFlowsFiltered
+                    .Where(x => checkedStateCodes.Where(si => int.Parse(si.Value) == x.Status).Any())
+                .ToList();
+            }
+
+
             if (OnFilterApplied != null)
             {
                 OnFilterApplied(lstScheduledFlowsFiltered);

@@ -31,6 +31,7 @@ namespace DataVerseTrigger.Controls.Grids
 
         public void RefreshGrid()
         {
+            dtGridScheduled.DataSource = null;
             dtGridScheduled.DataSource = lsManualCloudFlows;
             dtGridScheduled.Refresh();
         }

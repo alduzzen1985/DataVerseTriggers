@@ -64,7 +64,8 @@ namespace DataVerseTrigger.Helper
             Mode[] modes,
             Scope[] scopes,
             int? tableObjectCode,
-            bool isOnDemand
+            bool isOnDemand,
+            int[] statusCode
             )
         {
 
@@ -135,6 +136,16 @@ namespace DataVerseTrigger.Helper
                 foreach (string attribute in attributesOnUpdate)
                 {
                     conditions.AppendLine($"<condition attribute='triggeronupdateattributelist' operator='like' value='{attribute}' />");
+                }
+                conditions.AppendLine("</filter>");
+            }
+
+            if (statusCode.Length > 0)
+            {
+                conditions.AppendLine("<filter type='or'>");
+                foreach (int status in statusCode)
+                {
+                    conditions.AppendLine($"<condition attribute='statuscode' operator='like' value='{status}' />");
                 }
                 conditions.AppendLine("</filter>");
             }

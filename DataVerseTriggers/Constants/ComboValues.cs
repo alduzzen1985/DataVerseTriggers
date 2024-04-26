@@ -94,5 +94,11 @@ namespace DataVerseTrigger.Constants
             new BindingItem{Value="Button", Description="Button" },
             new BindingItem{Value="PowerAppV2", Description="PowerAppV2" }
         };
+
+        public static BindingItem[] WF_STATUS = new BindingItem[]
+       {
+            new BindingItem{Value="1", Description="Draft" },
+            new BindingItem{Value="2", Description="Activated" }
+       };
     }
 }

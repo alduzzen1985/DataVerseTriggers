@@ -43,6 +43,12 @@ namespace DataVerseTrigger.Controls.Filters
             chkRecurrency.ValueMember = "Value";
 
 
+            chkStatus.DataSource = ComboValues.WF_STATUS;
+            chkStatus.DisplayMember = "Description";
+            chkStatus.ValueMember = "Value";
+
+
+
         }
 
         private void btnApplyFilter_Click(object sender, EventArgs e)
@@ -52,6 +58,7 @@ namespace DataVerseTrigger.Controls.Filters
 
             var checkedItemsWeekDays = chkWeekDays.CheckedItems.OfType<BindingItem>().ToArray();
             var checkedItemsFrequency = chkRecurrency.CheckedItems.OfType<BindingItem>().ToArray();
+            var checkedStateCodes = chkStatus.CheckedItems.OfType<BindingItem>().ToArray();
 
 
             List<ScheduledCloudFlow> lstScheduledFlowsFiltered = LstScheduledCloudFlows;
@@ -59,7 +66,7 @@ namespace DataVerseTrigger.Controls.Filters
 
             if (!string.IsNullOrEmpty(txtName.Text))
             {
-                lstScheduledFlowsFiltered = lstScheduledFlowsFiltered.Where(x => x.Name.Contains(txtName.Text)).ToList();
+                lstScheduledFlowsFiltered = lstScheduledFlowsFiltered.Where(x => x.Name.ToUpper().Contains(txtName.Text)).ToList();
             }
 
             if (checkedItemsWeekDays.Length > 0)
@@ -77,7 +84,14 @@ namespace DataVerseTrigger.Controls.Filters
                 .ToList();
             }
 
-           
+            if (checkedStateCodes.Length > 0)
+            {
+                lstScheduledFlowsFiltered = lstScheduledFlowsFiltered
+                    .Where(x => checkedStateCodes.Where(si => int.Parse(si.Value) == x.Status).Any())
+                .ToList();
+            }
+
+
             if (OnFilterApplied != null)
             {
                 OnFilterApplied(lstScheduledFlowsFiltered);
@@ -86,7 +100,7 @@ namespace DataVerseTrigger.Controls.Filters
 
         private void lnkClearFilters_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            txtName.Text = string.Empty;
             ClearItemSelected(chkRecurrency);
             ClearItemSelected(chkWeekDays);
         }
