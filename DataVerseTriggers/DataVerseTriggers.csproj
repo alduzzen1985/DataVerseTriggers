@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="McTools.Xrm.Connection, Version=1.2023.6.56, Culture=neutral, PublicKeyToken=96037217801d9658, processorArchitecture=MSIL">
       <HintPath>..\packages\MscrmTools.Xrm.Connection.1.2023.6.56\lib\net462\McTools.Xrm.Connection.dll</HintPath>
     </Reference>
@@ -285,6 +291,18 @@
     <Compile Include="Controls\Forms\FormSelectAttributes.Designer.cs">
       <DependentUpon>FormSelectAttributes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Forms\FormTriggerSteps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\FormTriggerSteps.Designer.cs">
+      <DependentUpon>FormTriggerSteps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\TriggerDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Forms\TriggerDetails.Designer.cs">
+      <DependentUpon>TriggerDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Grids\PluginTriggers.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -320,6 +338,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Helper\BrowserLoader.cs" />
+    <Compile Include="Helper\TriggerDB\TriggerDatabaseManager.cs" />
+    <Compile Include="Helper\TriggerDB\TriggerIndexService.cs" />
+    <Compile Include="Helper\TriggerDB\TriggerModels.cs" />
     <Compile Include="Helper\CloudFlowHelper.cs" />
     <Compile Include="Helper\FetchXMLHelper.cs" />
     <Compile Include="Helper\MetaDataHelper.cs" />
@@ -385,6 +406,9 @@
     <EmbeddedResource Include="Controls\Forms\FormSelectAttributes.resx">
       <DependentUpon>FormSelectAttributes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Forms\TriggerDetails.resx">
+      <DependentUpon>TriggerDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Grids\PluginTriggers.resx">
       <DependentUpon>PluginTriggers.cs</DependentUpon>
     </EmbeddedResource>
@@ -417,6 +441,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
+      IF NOT EXIST "$(TargetDir)x64" mkdir "$(TargetDir)x64"
+      IF NOT EXIST "$(TargetDir)x86" mkdir "$(TargetDir)x86"
+      xcopy "$(SolutionDir)packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\x64\SQLite.Interop.dll" "$(TargetDir)x64\" /Y /Q
+      xcopy "$(SolutionDir)packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\x86\SQLite.Interop.dll" "$(TargetDir)x86\" /Y /Q
       IF $(ConfigurationName) == Debug (
       IF NOT EXIST Plugins mkdir Plugins
       DEL $(TargetDir)Plugins\manifest.json

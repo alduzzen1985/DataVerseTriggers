@@ -34,15 +34,6 @@ namespace DataVerseTrigger.Controls.Grids
             this.components = new System.ComponentModel.Container();
             this.pnlData = new System.Windows.Forms.Panel();
             this.dtWorkflows = new System.Windows.Forms.DataGridView();
-            this.classicWorkflowBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pnlDetails = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabDetails = new System.Windows.Forms.TabPage();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.tabFilters = new System.Windows.Forms.TabPage();
-            this.filterWorkflows1 = new FilterWorkflows();
-            this.scheduledCloudFlowBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.classicWorkflowBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.workflowidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workflowuniqueidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -57,6 +48,16 @@ namespace DataVerseTrigger.Controls.Grids
             this.TriggerOnStatusChange = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TriggerOnUpdate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.triggerOnUpdateAttributeListDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.classicWorkflowBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pnlDetails = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabDetails = new System.Windows.Forms.TabPage();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.tabFilters = new System.Windows.Forms.TabPage();
+            this.filterWorkflows1 = new DataVerseTrigger.Controls.Filters.FilterWorkflows();
+            this.scheduledCloudFlowBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.classicWorkflowBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.triggerDetails1 = new DataVerseTrigger.Controls.Forms.TriggerDetails();
             this.pnlData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtWorkflows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.classicWorkflowBindingSource)).BeginInit();
@@ -70,11 +71,13 @@ namespace DataVerseTrigger.Controls.Grids
             // 
             // pnlData
             // 
+            this.pnlData.Controls.Add(this.triggerDetails1);
             this.pnlData.Controls.Add(this.dtWorkflows);
             this.pnlData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlData.Location = new System.Drawing.Point(0, 0);
+            this.pnlData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlData.Name = "pnlData";
-            this.pnlData.Size = new System.Drawing.Size(1400, 1120);
+            this.pnlData.Size = new System.Drawing.Size(1244, 896);
             this.pnlData.TabIndex = 4;
             // 
             // dtWorkflows
@@ -97,96 +100,20 @@ namespace DataVerseTrigger.Controls.Grids
             this.TriggerOnUpdate,
             this.triggerOnUpdateAttributeListDataGridViewTextBoxColumn});
             this.dtWorkflows.DataSource = this.classicWorkflowBindingSource;
-            this.dtWorkflows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtWorkflows.Dock = System.Windows.Forms.DockStyle.Top;
             this.dtWorkflows.Location = new System.Drawing.Point(0, 0);
+            this.dtWorkflows.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtWorkflows.MultiSelect = false;
             this.dtWorkflows.Name = "dtWorkflows";
             this.dtWorkflows.ReadOnly = true;
             this.dtWorkflows.RowHeadersWidth = 62;
             this.dtWorkflows.RowTemplate.Height = 28;
             this.dtWorkflows.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtWorkflows.Size = new System.Drawing.Size(1400, 1120);
+            this.dtWorkflows.Size = new System.Drawing.Size(1244, 596);
             this.dtWorkflows.TabIndex = 0;
             this.dtWorkflows.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtWorkflows_CellClick);
             this.dtWorkflows.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtWorkflows_CellFormatting);
             this.dtWorkflows.SelectionChanged += new System.EventHandler(this.dtWorkflows_SelectionChanged);
-            // 
-            // classicWorkflowBindingSource
-            // 
-            this.classicWorkflowBindingSource.DataSource = typeof(ClassicWorkflow);
-            // 
-            // pnlDetails
-            // 
-            this.pnlDetails.Controls.Add(this.tabControl1);
-            this.pnlDetails.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDetails.Location = new System.Drawing.Point(1400, 0);
-            this.pnlDetails.Name = "pnlDetails";
-            this.pnlDetails.Size = new System.Drawing.Size(450, 1120);
-            this.pnlDetails.TabIndex = 3;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabDetails);
-            this.tabControl1.Controls.Add(this.tabFilters);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(450, 1120);
-            this.tabControl1.TabIndex = 3;
-            // 
-            // tabDetails
-            // 
-            this.tabDetails.Controls.Add(this.propertyGrid1);
-            this.tabDetails.Location = new System.Drawing.Point(4, 29);
-            this.tabDetails.Name = "tabDetails";
-            this.tabDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDetails.Size = new System.Drawing.Size(442, 1087);
-            this.tabDetails.TabIndex = 0;
-            this.tabDetails.Text = "Details";
-            this.tabDetails.UseVisualStyleBackColor = true;
-            // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(436, 1081);
-            this.propertyGrid1.TabIndex = 0;
-            // 
-            // tabFilters
-            // 
-            this.tabFilters.Controls.Add(this.filterWorkflows1);
-            this.tabFilters.Location = new System.Drawing.Point(4, 29);
-            this.tabFilters.Name = "tabFilters";
-            this.tabFilters.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFilters.Size = new System.Drawing.Size(442, 1087);
-            this.tabFilters.TabIndex = 1;
-            this.tabFilters.Text = "Filters";
-            this.tabFilters.UseVisualStyleBackColor = true;
-            // 
-            // filterWorkflows1
-            // 
-            this.filterWorkflows1.ConnectionDetail = null;
-            this.filterWorkflows1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filterWorkflows1.Location = new System.Drawing.Point(3, 3);
-            this.filterWorkflows1.LstClassicWorkflows = null;
-            this.filterWorkflows1.Name = "filterWorkflows1";
-            this.filterWorkflows1.PluginIcon = null;
-            this.filterWorkflows1.Service = null;
-            this.filterWorkflows1.Size = new System.Drawing.Size(436, 1081);
-            this.filterWorkflows1.TabIcon = null;
-            this.filterWorkflows1.TabIndex = 0;
-            this.filterWorkflows1.ToolName = null;
-            this.filterWorkflows1.OnFilterApplied += new FilterWorkflows.FilterApplied(this.filterWorkflows1_OnFilterApplied);
-            // 
-            // scheduledCloudFlowBindingSource
-            // 
-            this.scheduledCloudFlowBindingSource.DataSource = typeof(ScheduledCloudFlow);
-            // 
-            // classicWorkflowBindingSource1
-            // 
-            this.classicWorkflowBindingSource1.DataSource = typeof(ClassicWorkflow);
             // 
             // workflowidDataGridViewTextBoxColumn
             // 
@@ -225,7 +152,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.Status.MinimumWidth = 8;
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
-            this.Status.Width = 92;
+            this.Status.Width = 78;
             // 
             // primaryentitynameDataGridViewTextBoxColumn
             // 
@@ -253,7 +180,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.scopeNameDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.scopeNameDataGridViewTextBoxColumn.Name = "scopeNameDataGridViewTextBoxColumn";
             this.scopeNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.scopeNameDataGridViewTextBoxColumn.Width = 91;
+            this.scopeNameDataGridViewTextBoxColumn.Width = 81;
             // 
             // AsChildProcess
             // 
@@ -263,7 +190,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.AsChildProcess.MinimumWidth = 8;
             this.AsChildProcess.Name = "AsChildProcess";
             this.AsChildProcess.ReadOnly = true;
-            this.AsChildProcess.Width = 111;
+            this.AsChildProcess.Width = 87;
             // 
             // TriggerOnCreate
             // 
@@ -273,7 +200,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.TriggerOnCreate.MinimumWidth = 8;
             this.TriggerOnCreate.Name = "TriggerOnCreate";
             this.TriggerOnCreate.ReadOnly = true;
-            this.TriggerOnCreate.Width = 88;
+            this.TriggerOnCreate.Width = 66;
             // 
             // TriggerOnAssign
             // 
@@ -283,7 +210,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.TriggerOnAssign.MinimumWidth = 8;
             this.TriggerOnAssign.Name = "TriggerOnAssign";
             this.TriggerOnAssign.ReadOnly = true;
-            this.TriggerOnAssign.Width = 88;
+            this.TriggerOnAssign.Width = 67;
             // 
             // TriggerOnDelete
             // 
@@ -293,7 +220,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.TriggerOnDelete.MinimumWidth = 8;
             this.TriggerOnDelete.Name = "TriggerOnDelete";
             this.TriggerOnDelete.ReadOnly = true;
-            this.TriggerOnDelete.Width = 87;
+            this.TriggerOnDelete.Width = 66;
             // 
             // TriggerOnStatusChange
             // 
@@ -303,7 +230,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.TriggerOnStatusChange.MinimumWidth = 8;
             this.TriggerOnStatusChange.Name = "TriggerOnStatusChange";
             this.TriggerOnStatusChange.ReadOnly = true;
-            this.TriggerOnStatusChange.Width = 132;
+            this.TriggerOnStatusChange.Width = 108;
             // 
             // TriggerOnUpdate
             // 
@@ -323,13 +250,106 @@ namespace DataVerseTrigger.Controls.Grids
             this.triggerOnUpdateAttributeListDataGridViewTextBoxColumn.ReadOnly = true;
             this.triggerOnUpdateAttributeListDataGridViewTextBoxColumn.Width = 77;
             // 
+            // classicWorkflowBindingSource
+            // 
+            this.classicWorkflowBindingSource.DataSource = typeof(DataVerseTrigger.Models.ClassicWorkflow);
+            // 
+            // pnlDetails
+            // 
+            this.pnlDetails.Controls.Add(this.tabControl1);
+            this.pnlDetails.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlDetails.Location = new System.Drawing.Point(1244, 0);
+            this.pnlDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlDetails.Name = "pnlDetails";
+            this.pnlDetails.Size = new System.Drawing.Size(400, 896);
+            this.pnlDetails.TabIndex = 3;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabDetails);
+            this.tabControl1.Controls.Add(this.tabFilters);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(400, 896);
+            this.tabControl1.TabIndex = 3;
+            // 
+            // tabDetails
+            // 
+            this.tabDetails.Controls.Add(this.propertyGrid1);
+            this.tabDetails.Location = new System.Drawing.Point(4, 25);
+            this.tabDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabDetails.Name = "tabDetails";
+            this.tabDetails.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabDetails.Size = new System.Drawing.Size(392, 867);
+            this.tabDetails.TabIndex = 0;
+            this.tabDetails.Text = "Details";
+            this.tabDetails.UseVisualStyleBackColor = true;
+            // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid1.Location = new System.Drawing.Point(3, 2);
+            this.propertyGrid1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(386, 863);
+            this.propertyGrid1.TabIndex = 0;
+            // 
+            // tabFilters
+            // 
+            this.tabFilters.Controls.Add(this.filterWorkflows1);
+            this.tabFilters.Location = new System.Drawing.Point(4, 25);
+            this.tabFilters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabFilters.Name = "tabFilters";
+            this.tabFilters.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabFilters.Size = new System.Drawing.Size(392, 867);
+            this.tabFilters.TabIndex = 1;
+            this.tabFilters.Text = "Filters";
+            this.tabFilters.UseVisualStyleBackColor = true;
+            // 
+            // filterWorkflows1
+            // 
+            this.filterWorkflows1.ConnectionDetail = null;
+            this.filterWorkflows1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.filterWorkflows1.Location = new System.Drawing.Point(3, 2);
+            this.filterWorkflows1.LstClassicWorkflows = null;
+            this.filterWorkflows1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.filterWorkflows1.Name = "filterWorkflows1";
+            this.filterWorkflows1.PluginIcon = null;
+            this.filterWorkflows1.Service = null;
+            this.filterWorkflows1.Size = new System.Drawing.Size(386, 863);
+            this.filterWorkflows1.TabIcon = null;
+            this.filterWorkflows1.TabIndex = 0;
+            this.filterWorkflows1.ToolName = null;
+            this.filterWorkflows1.OnFilterApplied += new DataVerseTrigger.Controls.Filters.FilterWorkflows.FilterApplied(this.filterWorkflows1_OnFilterApplied);
+            // 
+            // scheduledCloudFlowBindingSource
+            // 
+            this.scheduledCloudFlowBindingSource.DataSource = typeof(DataVerseTrigger.Models.ScheduledCloudFlow);
+            // 
+            // classicWorkflowBindingSource1
+            // 
+            this.classicWorkflowBindingSource1.DataSource = typeof(DataVerseTrigger.Models.ClassicWorkflow);
+            // 
+            // triggerDetails1
+            // 
+            this.triggerDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.triggerDetails1.Location = new System.Drawing.Point(0, 596);
+            this.triggerDetails1.Name = "triggerDetails1";
+            this.triggerDetails1.Size = new System.Drawing.Size(1244, 300);
+            this.triggerDetails1.TabIndex = 2;
+            // 
             // WorkflowTrigger
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlData);
             this.Controls.Add(this.pnlDetails);
-            this.Size = new System.Drawing.Size(1850, 1120);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            ((System.Windows.Forms.Control)this).Name = "WorkflowTrigger";
+            this.Size = new System.Drawing.Size(1644, 896);
             this.pnlData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtWorkflows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.classicWorkflowBindingSource)).EndInit();
@@ -372,5 +392,6 @@ namespace DataVerseTrigger.Controls.Grids
         private System.Windows.Forms.DataGridViewCheckBoxColumn TriggerOnStatusChange;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TriggerOnUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn triggerOnUpdateAttributeListDataGridViewTextBoxColumn;
+        private Forms.TriggerDetails triggerDetails1;
     }
 }

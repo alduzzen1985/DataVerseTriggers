@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.34202.201
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11520.95 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataVerseTriggers", "DataVerseTriggers\DataVerseTriggers.csproj", "{E479383D-4D80-470E-AB3E-6BEFDD7B888C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutomationAnalyzer", "AutomationAnalyzer\AutomationAnalyzer.shproj", "{561FA393-7896-490F-B750-01AD3F673063}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {485E74FF-FB79-4C14-9CED-60F6EE60694E}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AutomationAnalyzer\AutomationAnalyzer.projitems*{561fa393-7896-490f-b750-01ad3f673063}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

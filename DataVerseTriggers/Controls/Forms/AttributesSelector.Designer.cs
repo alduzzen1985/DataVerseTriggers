@@ -51,17 +51,19 @@
             this.pnlAttributes.Controls.Add(this.pnlTables);
             this.pnlAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAttributes.Location = new System.Drawing.Point(0, 0);
+            this.pnlAttributes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlAttributes.Name = "pnlAttributes";
-            this.pnlAttributes.Size = new System.Drawing.Size(526, 352);
+            this.pnlAttributes.Size = new System.Drawing.Size(468, 282);
             this.pnlAttributes.TabIndex = 22;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.lstAttributes);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 93);
+            this.panel1.Location = new System.Drawing.Point(0, 75);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(526, 235);
+            this.panel1.Size = new System.Drawing.Size(468, 188);
             this.panel1.TabIndex = 61;
             // 
             // lstAttributes
@@ -73,9 +75,9 @@
             this.lstAttributes.Dock = System.Windows.Forms.DockStyle.Top;
             this.lstAttributes.HideSelection = false;
             this.lstAttributes.Location = new System.Drawing.Point(0, 0);
-            this.lstAttributes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lstAttributes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstAttributes.Name = "lstAttributes";
-            this.lstAttributes.Size = new System.Drawing.Size(526, 235);
+            this.lstAttributes.Size = new System.Drawing.Size(468, 189);
             this.lstAttributes.TabIndex = 60;
             this.lstAttributes.UseCompatibleStateImageBehavior = false;
             this.lstAttributes.View = System.Windows.Forms.View.Details;
@@ -94,9 +96,10 @@
             // 
             this.pnlSelectAttributes.Controls.Add(this.lnkSelectAttributes);
             this.pnlSelectAttributes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSelectAttributes.Location = new System.Drawing.Point(0, 62);
+            this.pnlSelectAttributes.Location = new System.Drawing.Point(0, 50);
+            this.pnlSelectAttributes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlSelectAttributes.Name = "pnlSelectAttributes";
-            this.pnlSelectAttributes.Size = new System.Drawing.Size(526, 31);
+            this.pnlSelectAttributes.Size = new System.Drawing.Size(468, 25);
             this.pnlSelectAttributes.TabIndex = 61;
             // 
             // lnkSelectAttributes
@@ -105,7 +108,7 @@
             this.lnkSelectAttributes.Dock = System.Windows.Forms.DockStyle.Top;
             this.lnkSelectAttributes.Location = new System.Drawing.Point(0, 0);
             this.lnkSelectAttributes.Name = "lnkSelectAttributes";
-            this.lnkSelectAttributes.Size = new System.Drawing.Size(127, 20);
+            this.lnkSelectAttributes.Size = new System.Drawing.Size(103, 16);
             this.lnkSelectAttributes.TabIndex = 0;
             this.lnkSelectAttributes.TabStop = true;
             this.lnkSelectAttributes.Text = "Select Attributes";
@@ -117,17 +120,19 @@
             this.pnlTables.Controls.Add(this.lblEntityName);
             this.pnlTables.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTables.Location = new System.Drawing.Point(0, 0);
+            this.pnlTables.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTables.Name = "pnlTables";
-            this.pnlTables.Size = new System.Drawing.Size(526, 62);
+            this.pnlTables.Size = new System.Drawing.Size(468, 50);
             this.pnlTables.TabIndex = 21;
             // 
             // cmbTable
             // 
             this.cmbTable.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmbTable.FormattingEnabled = true;
-            this.cmbTable.Location = new System.Drawing.Point(0, 20);
+            this.cmbTable.Location = new System.Drawing.Point(0, 16);
+            this.cmbTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbTable.Name = "cmbTable";
-            this.cmbTable.Size = new System.Drawing.Size(526, 28);
+            this.cmbTable.Size = new System.Drawing.Size(468, 24);
             this.cmbTable.TabIndex = 8;
             this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedValueChanged);
             // 
@@ -137,18 +142,19 @@
             this.lblEntityName.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblEntityName.Location = new System.Drawing.Point(0, 0);
             this.lblEntityName.Name = "lblEntityName";
-            this.lblEntityName.Size = new System.Drawing.Size(48, 20);
+            this.lblEntityName.Size = new System.Drawing.Size(43, 16);
             this.lblEntityName.TabIndex = 7;
             this.lblEntityName.Text = "Table";
             // 
             // AttributesSelector
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.pnlAttributes);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AttributesSelector";
-            this.Size = new System.Drawing.Size(526, 352);
+            this.Size = new System.Drawing.Size(468, 282);
             this.Load += new System.EventHandler(this.AttributesSelector_Load);
             this.pnlAttributes.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

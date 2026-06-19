@@ -47,6 +47,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.runasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataVerseCloudFlowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlData = new System.Windows.Forms.Panel();
+            this.triggerDetails1 = new DataVerseTrigger.Controls.Forms.TriggerDetails();
             this.pnlDetails = new System.Windows.Forms.Panel();
             this.tabCloudFlows = new System.Windows.Forms.TabControl();
             this.tabDetails = new System.Windows.Forms.TabPage();
@@ -84,17 +85,18 @@ namespace DataVerseTrigger.Controls.Grids
             this.postponeuntilDataGridViewTextBoxColumn,
             this.runasDataGridViewTextBoxColumn});
             this.dtGridDataVerse.DataSource = this.dataVerseCloudFlowBindingSource;
-            this.dtGridDataVerse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtGridDataVerse.Dock = System.Windows.Forms.DockStyle.Top;
             this.dtGridDataVerse.Location = new System.Drawing.Point(0, 0);
+            this.dtGridDataVerse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtGridDataVerse.MultiSelect = false;
             this.dtGridDataVerse.Name = "dtGridDataVerse";
             this.dtGridDataVerse.ReadOnly = true;
             this.dtGridDataVerse.RowHeadersWidth = 62;
             this.dtGridDataVerse.RowTemplate.Height = 28;
             this.dtGridDataVerse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGridDataVerse.Size = new System.Drawing.Size(1400, 1120);
+            this.dtGridDataVerse.Size = new System.Drawing.Size(1244, 702);
             this.dtGridDataVerse.TabIndex = 0;
-            this.dtGridDataVerse.DataSourceChanged += new System.EventHandler(this.dtGridDataVerse_DataSourceChanged);
+            this.dtGridDataVerse.DataSourceChanged += new System.EventHandler(this.dtGridDataVerse_SelectionChanged);
             this.dtGridDataVerse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridDataVerse_CellClick);
             this.dtGridDataVerse.SelectionChanged += new System.EventHandler(this.dtGridDataVerse_SelectionChanged);
             // 
@@ -153,7 +155,7 @@ namespace DataVerseTrigger.Controls.Grids
             this.messageDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.messageDataGridViewTextBoxColumn.Name = "messageDataGridViewTextBoxColumn";
             this.messageDataGridViewTextBoxColumn.ReadOnly = true;
-            this.messageDataGridViewTextBoxColumn.Width = 110;
+            this.messageDataGridViewTextBoxColumn.Width = 98;
             // 
             // scopeDataGridViewTextBoxColumn
             // 
@@ -206,20 +208,34 @@ namespace DataVerseTrigger.Controls.Grids
             // 
             // pnlData
             // 
+            this.pnlData.Controls.Add(this.triggerDetails1);
             this.pnlData.Controls.Add(this.dtGridDataVerse);
             this.pnlData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlData.Location = new System.Drawing.Point(0, 0);
+            this.pnlData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlData.Name = "pnlData";
-            this.pnlData.Size = new System.Drawing.Size(1400, 1120);
+            this.pnlData.Size = new System.Drawing.Size(1244, 896);
             this.pnlData.TabIndex = 1;
+            // 
+            // triggerDetails1
+            // 
+            this.triggerDetails1.DbPath = null;
+            this.triggerDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.triggerDetails1.EnvironmentId = null;
+            this.triggerDetails1.Location = new System.Drawing.Point(0, 702);
+            this.triggerDetails1.Name = "triggerDetails1";
+            this.triggerDetails1.OrgBaseUrl = null;
+            this.triggerDetails1.Size = new System.Drawing.Size(1244, 194);
+            this.triggerDetails1.TabIndex = 1;
             // 
             // pnlDetails
             // 
             this.pnlDetails.Controls.Add(this.tabCloudFlows);
             this.pnlDetails.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDetails.Location = new System.Drawing.Point(1400, 0);
+            this.pnlDetails.Location = new System.Drawing.Point(1244, 0);
+            this.pnlDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlDetails.Name = "pnlDetails";
-            this.pnlDetails.Size = new System.Drawing.Size(450, 1120);
+            this.pnlDetails.Size = new System.Drawing.Size(400, 896);
             this.pnlDetails.TabIndex = 2;
             // 
             // tabCloudFlows
@@ -228,18 +244,20 @@ namespace DataVerseTrigger.Controls.Grids
             this.tabCloudFlows.Controls.Add(this.tabFilter);
             this.tabCloudFlows.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCloudFlows.Location = new System.Drawing.Point(0, 0);
+            this.tabCloudFlows.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabCloudFlows.Name = "tabCloudFlows";
             this.tabCloudFlows.SelectedIndex = 0;
-            this.tabCloudFlows.Size = new System.Drawing.Size(450, 1120);
+            this.tabCloudFlows.Size = new System.Drawing.Size(400, 896);
             this.tabCloudFlows.TabIndex = 1;
             // 
             // tabDetails
             // 
             this.tabDetails.Controls.Add(this.propertyGrid1);
-            this.tabDetails.Location = new System.Drawing.Point(4, 29);
+            this.tabDetails.Location = new System.Drawing.Point(4, 25);
+            this.tabDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabDetails.Name = "tabDetails";
-            this.tabDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDetails.Size = new System.Drawing.Size(442, 1087);
+            this.tabDetails.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabDetails.Size = new System.Drawing.Size(392, 867);
             this.tabDetails.TabIndex = 0;
             this.tabDetails.Text = "Details";
             this.tabDetails.UseVisualStyleBackColor = true;
@@ -247,18 +265,20 @@ namespace DataVerseTrigger.Controls.Grids
             // propertyGrid1
             // 
             this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
+            this.propertyGrid1.Location = new System.Drawing.Point(3, 2);
+            this.propertyGrid1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(436, 1081);
+            this.propertyGrid1.Size = new System.Drawing.Size(386, 863);
             this.propertyGrid1.TabIndex = 0;
             // 
             // tabFilter
             // 
             this.tabFilter.Controls.Add(this.dataVerseFilters1);
-            this.tabFilter.Location = new System.Drawing.Point(4, 29);
+            this.tabFilter.Location = new System.Drawing.Point(4, 25);
+            this.tabFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabFilter.Name = "tabFilter";
-            this.tabFilter.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFilter.Size = new System.Drawing.Size(442, 1087);
+            this.tabFilter.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabFilter.Size = new System.Drawing.Size(392, 867);
             this.tabFilter.TabIndex = 1;
             this.tabFilter.Text = "Filters";
             this.tabFilter.UseVisualStyleBackColor = true;
@@ -269,12 +289,13 @@ namespace DataVerseTrigger.Controls.Grids
             this.dataVerseFilters1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dataVerseFilters1.ConnectionDetail = null;
             this.dataVerseFilters1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataVerseFilters1.Location = new System.Drawing.Point(3, 3);
+            this.dataVerseFilters1.Location = new System.Drawing.Point(3, 2);
             this.dataVerseFilters1.LstDataVerseTriggers = null;
+            this.dataVerseFilters1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataVerseFilters1.Name = "dataVerseFilters1";
             this.dataVerseFilters1.PluginIcon = null;
             this.dataVerseFilters1.Service = null;
-            this.dataVerseFilters1.Size = new System.Drawing.Size(436, 1081);
+            this.dataVerseFilters1.Size = new System.Drawing.Size(386, 863);
             this.dataVerseFilters1.TabIcon = null;
             this.dataVerseFilters1.TabIndex = 0;
             this.dataVerseFilters1.ToolName = null;
@@ -285,17 +306,19 @@ namespace DataVerseTrigger.Controls.Grids
             this.pnlTab.Controls.Add(this.pnlDetails);
             this.pnlTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTab.Location = new System.Drawing.Point(0, 0);
+            this.pnlTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTab.Name = "pnlTab";
-            this.pnlTab.Size = new System.Drawing.Size(1850, 1120);
+            this.pnlTab.Size = new System.Drawing.Size(1644, 896);
             this.pnlTab.TabIndex = 3;
             // 
             // DataVerseTriggerGrid
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlTab);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DataVerseTriggerGrid";
-            this.Size = new System.Drawing.Size(1850, 1120);
+            this.Size = new System.Drawing.Size(1644, 896);
             ((System.ComponentModel.ISupportInitialize)(this.dtGridDataVerse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataVerseCloudFlowBindingSource)).EndInit();
             this.pnlData.ResumeLayout(false);
@@ -333,5 +356,6 @@ namespace DataVerseTrigger.Controls.Grids
         private System.Windows.Forms.DataGridViewTextBoxColumn filterexpressionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn postponeuntilDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn runasDataGridViewTextBoxColumn;
+        private Forms.TriggerDetails triggerDetails1;
     }
 }

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>561fa393-7896-490f-b750-01ad3f673063</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AutomationAnalyzer</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ClassicWorkflowParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DatabaseManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FlowIndexer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FlowQueryService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FlowRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FlowTriggerParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MetadataRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Program.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WorkflowDataverseRepository.cs" />
+  </ItemGroup>
+</Project>

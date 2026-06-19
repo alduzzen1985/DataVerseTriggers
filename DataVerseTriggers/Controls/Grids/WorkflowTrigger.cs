@@ -37,6 +37,26 @@ namespace DataVerseTrigger.Controls.Grids
 
         public List<ClassicWorkflow> LsClassicWorkflows { get => lsClassicWorkflows; set => lsClassicWorkflows = value; }
 
+        public string DbPath
+        {
+            set { triggerDetails1.DbPath = value; }
+        }
+
+        public string EnvironmentId
+        {
+            set { triggerDetails1.EnvironmentId = value; }
+        }
+
+        public string OrgBaseUrl
+        {
+            set { triggerDetails1.OrgBaseUrl = value; }
+        }
+
+        public System.Action<string> OpenUrlAction
+        {
+            set { triggerDetails1.OpenUrlAction = value; }
+        }
+
         public WorkflowTrigger()
         {
             InitializeComponent();
@@ -60,10 +80,8 @@ namespace DataVerseTrigger.Controls.Grids
             if (dtWorkflows.SelectedRows.Count == 1)
             {
                 ClassicWorkflow selectedRow = dtWorkflows.SelectedRows[0].DataBoundItem as ClassicWorkflow;
-
                 propertyGrid1.SelectedObject = selectedRow;
-
-
+                triggerDetails1.LoadTriggersFor(selectedRow?.Workflowid.ToString());
             }
         }
 

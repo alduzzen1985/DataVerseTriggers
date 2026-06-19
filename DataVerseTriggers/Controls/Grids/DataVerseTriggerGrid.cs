@@ -36,6 +36,26 @@ namespace DataVerseTrigger.Controls.Grids
             set { dataVerseFilters1.Service = value; }
         }
 
+        public string DbPath
+        {
+            set { triggerDetails1.DbPath = value; }
+        }
+
+        public string EnvironmentId
+        {
+            set { triggerDetails1.EnvironmentId = value; }
+        }
+
+        public string OrgBaseUrl
+        {
+            set { triggerDetails1.OrgBaseUrl = value; }
+        }
+
+        public System.Action<string> OpenUrlAction
+        {
+            set { triggerDetails1.OpenUrlAction = value; }
+        }
+
         public DataVerseTriggerGrid()
         {
             InitializeComponent();
@@ -74,6 +94,7 @@ namespace DataVerseTrigger.Controls.Grids
             {
                 DataVerseCloudFlow selectedRow = dtGridDataVerse.SelectedRows[0].DataBoundItem as DataVerseCloudFlow;
                 propertyGrid1.SelectedObject = selectedRow;
+                triggerDetails1.LoadTriggersFor(selectedRow?.Workflowid.ToString());
             }
         }
 
@@ -121,28 +142,6 @@ namespace DataVerseTrigger.Controls.Grids
         private void dtGridDataVerse_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
-        }
-
-        private void dtGridDataVerse_DataSourceChanged(object sender, EventArgs e)
-        {
-
-            foreach (DataGridViewRow row in dtGridDataVerse.Rows)
-            {
-                var flow = (DataVerseCloudFlow)row.DataBoundItem;
-                row.Cells["Status"].Style.ForeColor = flow.Status == 2 ? Color.Green : Color.Red;
-
-            }
-
-            //var flow = (DataVerseCloudFlow)dtGridDataVerse.Rows[e.RowIndex].DataBoundItem;
-            //var column = dtGridDataVerse.Columns[e.ColumnIndex];
-            //var columnName = column.Name;
-
-
-            //if (flow != null && columnName == "Status")
-            //{
-            //    e.CellStyle.ForeColor = flow.Status == 2 ? Color.Green : Color.Red;
-
-            //}
         }
     }
 }

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Windows.Forms;
 using DataVerseTrigger.Constants;
 using DataVerseTrigger.Enums;
 using DataVerseTrigger.Helper;
+using DataVerseTrigger.Helper.TriggerDB;
 using DataVerseTrigger.Models;
 using DataVerseTrigger.Models.CloudFlows;
 using McTools.Xrm.Connection;
@@ -598,6 +600,7 @@ namespace DataVerseTrigger
 
 
             LoadPlugin();
+            BuildTriggerDatabase();
 
 
         }
@@ -1146,7 +1149,116 @@ namespace DataVerseTrigger
             LoadPlugin();
         }
 
+        private void cstControlDataverseTriggers_Load(object sender, EventArgs e)
+        {
 
+        }
+
+        private void BuildTriggerDatabase(bool forceRebuild = false)
+        {
+            if (Service == null || ConnectionDetail == null || !ConnectionDetail.ConnectionId.HasValue) return;
+
+            string dbPath = TriggerDatabaseManager.GetDbPath(
+                ConnectionDetail.ConnectionId.Value,
+                ConnectionDetail.ConnectionName ?? "Unknown");
+
+            cstControlDataverseTriggers.DbPath = dbPath;
+            cstControlWorkflowsTriggers.DbPath = dbPath;
+
+            string envId = ConnectionDetail.EnvironmentId ?? string.Empty;
+            string orgUrl = ConnectionDetail.OriginalUrl ?? string.Empty;
+            cstControlDataverseTriggers.EnvironmentId = envId;
+            cstControlDataverseTriggers.OrgBaseUrl = orgUrl;
+            cstControlWorkflowsTriggers.EnvironmentId = envId;
+            cstControlWorkflowsTriggers.OrgBaseUrl = orgUrl;
+
+            System.Action<string> openUrl = url =>
+            {
+                var process = new Process();
+                process.StartInfo = new ProcessStartInfo(mySettings.Browser.Executable)
+                {
+                    Arguments = url
+                };
+                switch (mySettings.Browser.Type)
+                {
+                    case BrowserEnum.Chrome:
+                    case BrowserEnum.Edge:
+                        process.StartInfo.Arguments += $" --profile-directory=\"{mySettings.BrowserProfile.Path}\"";
+                        break;
+                    case BrowserEnum.Firefox:
+                        process.StartInfo.Arguments += $" -P \"{mySettings.BrowserProfile.Path}\"";
+                        break;
+                }
+                process.Start();
+            };
+            cstControlDataverseTriggers.OpenUrlAction = openUrl;
+            cstControlWorkflowsTriggers.OpenUrlAction = openUrl;
+
+            if (!forceRebuild && File.Exists(dbPath))
+            {
+                try
+                {
+                    var db = new TriggerDatabaseManager(dbPath);
+                    UpdateLastRefreshLabel(db.GetLastRefreshTime());
+                }
+                catch { }
+                return;
+            }
+
+            toolStripProgressBar1.Value = 0;
+            toolStripProgressBar1.Visible = true;
+            toolStripLabelLastRefresh.Text = "Building...";
+            toolStripButton1.Enabled = false;
+
+            string environmentId = ConnectionDetail.EnvironmentId ?? string.Empty;
+
+            WorkAsync(new WorkAsyncInfo
+            {
+                Work = (worker, args) =>
+                {
+                    var db = new TriggerDatabaseManager(dbPath);
+                    db.InitializeDatabase();
+                    var indexService = new TriggerIndexService(Service, db);
+                    indexService.RebuildIndex(environmentId, (percent, message) =>
+                        worker.ReportProgress(percent, message));
+                    db.SaveRefreshTime(DateTime.Now);
+                    args.Result = db.GetLastRefreshTime();
+                },
+                ProgressChanged = (args) =>
+                {
+                    toolStripProgressBar1.Value = Math.Min(Math.Max(args.ProgressPercentage, 0), 100);
+                    if (args.UserState is string msg && !string.IsNullOrEmpty(msg))
+                        toolStripLabelLastRefresh.Text = msg;
+                },
+                PostWorkCallBack = (args) =>
+                {
+                    toolStripProgressBar1.Visible = false;
+                    toolStripButton1.Enabled = true;
+                    if (args.Error != null)
+                    {
+                        MessageBox.Show($"Error building metadata index:\n{args.Error.Message}",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        toolStripLabelLastRefresh.Text = "Error";
+                    }
+                    else
+                    {
+                        UpdateLastRefreshLabel(args.Result as DateTime?);
+                    }
+                }
+            });
+        }
+
+        private void UpdateLastRefreshLabel(DateTime? lastRefresh)
+        {
+            toolStripLabelLastRefresh.Text = lastRefresh.HasValue
+                ? lastRefresh.Value.ToString("yyyy-MM-dd HH:mm")
+                : "-";
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            BuildTriggerDatabase(forceRebuild: true);
+        }
     }
 
 

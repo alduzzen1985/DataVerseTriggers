@@ -60,6 +60,9 @@ namespace DataVerseTrigger
             this.cstManualTrigger = new DataVerseTrigger.Controls.Grids.ManualTriggerCloudFlows();
             this.cstControlWorkflowsTriggers = new DataVerseTrigger.Controls.Grids.WorkflowTrigger();
             this.cstPluginTriggers1 = new DataVerseTrigger.Controls.Grids.PluginTriggers();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabelLastRefresh = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripMenu.SuspendLayout();
             this.pnlFlows.SuspendLayout();
             this.tabPlugins.SuspendLayout();
@@ -87,10 +90,13 @@ namespace DataVerseTrigger
             this.cmbListSolutions,
             this.toolStripSeparator3,
             this.btnDownloadExcel,
+            this.toolStripButton1,
+            this.toolStripLabelLastRefresh,
+            this.toolStripProgressBar1,
             this.lblYouMustConnect});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(2341, 38);
+            this.toolStripMenu.Size = new System.Drawing.Size(2081, 55);
             this.toolStripMenu.TabIndex = 4;
             this.toolStripMenu.Text = "toolStrip1";
             // 
@@ -99,33 +105,33 @@ namespace DataVerseTrigger
             this.tsbClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbClose.Image = ((System.Drawing.Image)(resources.GetObject("tsbClose.Image")));
             this.tsbClose.Name = "tsbClose";
-            this.tsbClose.Size = new System.Drawing.Size(34, 33);
+            this.tsbClose.Size = new System.Drawing.Size(32, 51);
             this.tsbClose.Text = "Close this tool";
             this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
             // 
             // tssSeparator1
             // 
             this.tssSeparator1.Name = "tssSeparator1";
-            this.tssSeparator1.Size = new System.Drawing.Size(6, 34);
+            this.tssSeparator1.Size = new System.Drawing.Size(6, 55);
             // 
             // btnRefresh
             // 
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(98, 29);
+            this.btnRefresh.Size = new System.Drawing.Size(94, 51);
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 34);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 55);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(75, 29);
+            this.toolStripLabel1.Size = new System.Drawing.Size(70, 51);
             this.toolStripLabel1.Text = "Browser";
             this.toolStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -133,13 +139,13 @@ namespace DataVerseTrigger
             // 
             this.cbBrowser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBrowser.Name = "cbBrowser";
-            this.cbBrowser.Size = new System.Drawing.Size(121, 34);
+            this.cbBrowser.Size = new System.Drawing.Size(108, 55);
             this.cbBrowser.SelectedIndexChanged += new System.EventHandler(this.cbBrowser_SelectedIndexChanged);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(130, 29);
+            this.toolStripLabel2.Size = new System.Drawing.Size(123, 51);
             this.toolStripLabel2.Text = "Browser Profile";
             // 
             // cbProfile
@@ -147,18 +153,18 @@ namespace DataVerseTrigger
             this.cbProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProfile.DropDownWidth = 150;
             this.cbProfile.Name = "cbProfile";
-            this.cbProfile.Size = new System.Drawing.Size(200, 34);
+            this.cbProfile.Size = new System.Drawing.Size(178, 55);
             this.cbProfile.SelectedIndexChanged += new System.EventHandler(this.cbProfile_SelectedIndexChanged);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 34);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 55);
             // 
             // lblSolution
             // 
             this.lblSolution.Name = "lblSolution";
-            this.lblSolution.Size = new System.Drawing.Size(78, 29);
+            this.lblSolution.Size = new System.Drawing.Size(73, 51);
             this.lblSolution.Text = "Solution";
             // 
             // cmbListSolutions
@@ -166,20 +172,20 @@ namespace DataVerseTrigger
             this.cmbListSolutions.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbListSolutions.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbListSolutions.Name = "cmbListSolutions";
-            this.cmbListSolutions.Size = new System.Drawing.Size(400, 34);
+            this.cmbListSolutions.Size = new System.Drawing.Size(356, 55);
             this.cmbListSolutions.SelectedIndexChanged += new System.EventHandler(this.cmbListSolutions_SelectedIndexChanged);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 34);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 55);
             // 
             // btnDownloadExcel
             // 
             this.btnDownloadExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnDownloadExcel.Image")));
             this.btnDownloadExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDownloadExcel.Name = "btnDownloadExcel";
-            this.btnDownloadExcel.Size = new System.Drawing.Size(165, 29);
+            this.btnDownloadExcel.Size = new System.Drawing.Size(158, 51);
             this.btnDownloadExcel.Text = "Download Excel";
             this.btnDownloadExcel.Click += new System.EventHandler(this.btnDownloadExcel_Click);
             // 
@@ -188,16 +194,17 @@ namespace DataVerseTrigger
             this.lblYouMustConnect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblYouMustConnect.ForeColor = System.Drawing.Color.Red;
             this.lblYouMustConnect.Name = "lblYouMustConnect";
-            this.lblYouMustConnect.Size = new System.Drawing.Size(202, 29);
+            this.lblYouMustConnect.Size = new System.Drawing.Size(187, 51);
             this.lblYouMustConnect.Text = "You\'re not connected !";
             // 
             // pnlFlows
             // 
             this.pnlFlows.Controls.Add(this.tabPlugins);
             this.pnlFlows.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFlows.Location = new System.Drawing.Point(0, 38);
+            this.pnlFlows.Location = new System.Drawing.Point(0, 55);
+            this.pnlFlows.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlFlows.Name = "pnlFlows";
-            this.pnlFlows.Size = new System.Drawing.Size(2341, 834);
+            this.pnlFlows.Size = new System.Drawing.Size(2081, 643);
             this.pnlFlows.TabIndex = 6;
             // 
             // tabPlugins
@@ -209,18 +216,20 @@ namespace DataVerseTrigger
             this.tabPlugins.Controls.Add(this.tabPage1);
             this.tabPlugins.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPlugins.Location = new System.Drawing.Point(0, 0);
+            this.tabPlugins.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPlugins.Name = "tabPlugins";
             this.tabPlugins.SelectedIndex = 0;
-            this.tabPlugins.Size = new System.Drawing.Size(2341, 834);
+            this.tabPlugins.Size = new System.Drawing.Size(2081, 643);
             this.tabPlugins.TabIndex = 0;
             // 
             // tabDataVerseTriggers
             // 
             this.tabDataVerseTriggers.Controls.Add(this.cstControlDataverseTriggers);
-            this.tabDataVerseTriggers.Location = new System.Drawing.Point(4, 29);
+            this.tabDataVerseTriggers.Location = new System.Drawing.Point(4, 25);
+            this.tabDataVerseTriggers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabDataVerseTriggers.Name = "tabDataVerseTriggers";
-            this.tabDataVerseTriggers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDataVerseTriggers.Size = new System.Drawing.Size(2333, 801);
+            this.tabDataVerseTriggers.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabDataVerseTriggers.Size = new System.Drawing.Size(2073, 614);
             this.tabDataVerseTriggers.TabIndex = 0;
             this.tabDataVerseTriggers.Text = "DataVerse Tables Triggers";
             this.tabDataVerseTriggers.UseVisualStyleBackColor = true;
@@ -228,10 +237,11 @@ namespace DataVerseTrigger
             // tabScheduled
             // 
             this.tabScheduled.Controls.Add(this.cstControlRecurrencyTriggers);
-            this.tabScheduled.Location = new System.Drawing.Point(4, 29);
+            this.tabScheduled.Location = new System.Drawing.Point(4, 25);
+            this.tabScheduled.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabScheduled.Name = "tabScheduled";
-            this.tabScheduled.Padding = new System.Windows.Forms.Padding(3);
-            this.tabScheduled.Size = new System.Drawing.Size(2333, 801);
+            this.tabScheduled.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabScheduled.Size = new System.Drawing.Size(2073, 637);
             this.tabScheduled.TabIndex = 1;
             this.tabScheduled.Text = "Scheduled";
             this.tabScheduled.UseVisualStyleBackColor = true;
@@ -239,10 +249,11 @@ namespace DataVerseTrigger
             // tabManual
             // 
             this.tabManual.Controls.Add(this.cstManualTrigger);
-            this.tabManual.Location = new System.Drawing.Point(4, 29);
+            this.tabManual.Location = new System.Drawing.Point(4, 25);
+            this.tabManual.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabManual.Name = "tabManual";
-            this.tabManual.Padding = new System.Windows.Forms.Padding(3);
-            this.tabManual.Size = new System.Drawing.Size(2333, 801);
+            this.tabManual.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabManual.Size = new System.Drawing.Size(2073, 637);
             this.tabManual.TabIndex = 4;
             this.tabManual.Text = "Manual";
             this.tabManual.UseVisualStyleBackColor = true;
@@ -250,9 +261,10 @@ namespace DataVerseTrigger
             // tabWorkflows
             // 
             this.tabWorkflows.Controls.Add(this.cstControlWorkflowsTriggers);
-            this.tabWorkflows.Location = new System.Drawing.Point(4, 29);
+            this.tabWorkflows.Location = new System.Drawing.Point(4, 25);
+            this.tabWorkflows.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabWorkflows.Name = "tabWorkflows";
-            this.tabWorkflows.Size = new System.Drawing.Size(2333, 801);
+            this.tabWorkflows.Size = new System.Drawing.Size(2073, 637);
             this.tabWorkflows.TabIndex = 2;
             this.tabWorkflows.Text = "Workflows";
             this.tabWorkflows.UseVisualStyleBackColor = true;
@@ -260,10 +272,11 @@ namespace DataVerseTrigger
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.cstPluginTriggers1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(2333, 801);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(2073, 637);
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Plugins";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -272,27 +285,30 @@ namespace DataVerseTrigger
             // 
             this.cstControlDataverseTriggers.ConnectionDetail = null;
             this.cstControlDataverseTriggers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cstControlDataverseTriggers.Location = new System.Drawing.Point(3, 3);
+            this.cstControlDataverseTriggers.Location = new System.Drawing.Point(3, 2);
             this.cstControlDataverseTriggers.LstDataVerseTriggers = null;
+            this.cstControlDataverseTriggers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cstControlDataverseTriggers.Name = "cstControlDataverseTriggers";
             this.cstControlDataverseTriggers.PluginIcon = null;
             this.cstControlDataverseTriggers.Service = null;
-            this.cstControlDataverseTriggers.Size = new System.Drawing.Size(2327, 795);
+            this.cstControlDataverseTriggers.Size = new System.Drawing.Size(2067, 610);
             this.cstControlDataverseTriggers.TabIcon = null;
             this.cstControlDataverseTriggers.TabIndex = 0;
             this.cstControlDataverseTriggers.ToolName = null;
             this.cstControlDataverseTriggers.OnProcessSelected += new DataVerseTrigger.Extensions.BaseControl.ProcessSelected(this.CstControlDataverseTriggers_OnProcessSelected);
+            this.cstControlDataverseTriggers.Load += new System.EventHandler(this.cstControlDataverseTriggers_Load);
             // 
             // cstControlRecurrencyTriggers
             // 
             this.cstControlRecurrencyTriggers.ConnectionDetail = null;
             this.cstControlRecurrencyTriggers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cstControlRecurrencyTriggers.Location = new System.Drawing.Point(3, 3);
+            this.cstControlRecurrencyTriggers.Location = new System.Drawing.Point(3, 2);
             this.cstControlRecurrencyTriggers.LstScheduledCloudFlows = null;
+            this.cstControlRecurrencyTriggers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cstControlRecurrencyTriggers.Name = "cstControlRecurrencyTriggers";
             this.cstControlRecurrencyTriggers.PluginIcon = null;
             this.cstControlRecurrencyTriggers.Service = null;
-            this.cstControlRecurrencyTriggers.Size = new System.Drawing.Size(2327, 795);
+            this.cstControlRecurrencyTriggers.Size = new System.Drawing.Size(2067, 633);
             this.cstControlRecurrencyTriggers.TabIcon = null;
             this.cstControlRecurrencyTriggers.TabIndex = 0;
             this.cstControlRecurrencyTriggers.ToolName = null;
@@ -302,12 +318,13 @@ namespace DataVerseTrigger
             // 
             this.cstManualTrigger.ConnectionDetail = null;
             this.cstManualTrigger.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cstManualTrigger.Location = new System.Drawing.Point(3, 3);
+            this.cstManualTrigger.Location = new System.Drawing.Point(3, 2);
             this.cstManualTrigger.LstScheduledCloudFlows = null;
+            this.cstManualTrigger.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cstManualTrigger.Name = "cstManualTrigger";
             this.cstManualTrigger.PluginIcon = null;
             this.cstManualTrigger.Service = null;
-            this.cstManualTrigger.Size = new System.Drawing.Size(2327, 795);
+            this.cstManualTrigger.Size = new System.Drawing.Size(2067, 633);
             this.cstManualTrigger.TabIcon = null;
             this.cstManualTrigger.TabIndex = 0;
             this.cstManualTrigger.ToolName = null;
@@ -319,10 +336,11 @@ namespace DataVerseTrigger
             this.cstControlWorkflowsTriggers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cstControlWorkflowsTriggers.Location = new System.Drawing.Point(0, 0);
             this.cstControlWorkflowsTriggers.LsClassicWorkflows = null;
+            this.cstControlWorkflowsTriggers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cstControlWorkflowsTriggers.Name = "cstControlWorkflowsTriggers";
             this.cstControlWorkflowsTriggers.PluginIcon = null;
             this.cstControlWorkflowsTriggers.Service = null;
-            this.cstControlWorkflowsTriggers.Size = new System.Drawing.Size(2333, 801);
+            this.cstControlWorkflowsTriggers.Size = new System.Drawing.Size(2073, 637);
             this.cstControlWorkflowsTriggers.SolutionId = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.cstControlWorkflowsTriggers.TabIcon = null;
             this.cstControlWorkflowsTriggers.TabIndex = 0;
@@ -332,23 +350,47 @@ namespace DataVerseTrigger
             // cstPluginTriggers1
             // 
             this.cstPluginTriggers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cstPluginTriggers1.Location = new System.Drawing.Point(3, 3);
+            this.cstPluginTriggers1.Location = new System.Drawing.Point(3, 2);
             this.cstPluginTriggers1.LstPlugins = null;
+            this.cstPluginTriggers1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cstPluginTriggers1.Name = "cstPluginTriggers1";
             this.cstPluginTriggers1.Service = null;
-            this.cstPluginTriggers1.Size = new System.Drawing.Size(2327, 795);
+            this.cstPluginTriggers1.Size = new System.Drawing.Size(2067, 633);
             this.cstPluginTriggers1.SolutionId = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.cstPluginTriggers1.TabIndex = 0;
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(148, 51);
+            this.toolStripButton1.Text = "Refresh Metadata";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            //
+            // toolStripLabelLastRefresh
+            //
+            this.toolStripLabelLastRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripLabelLastRefresh.Name = "toolStripLabelLastRefresh";
+            this.toolStripLabelLastRefresh.Size = new System.Drawing.Size(30, 51);
+            this.toolStripLabelLastRefresh.Text = "-";
+            //
+            // toolStripProgressBar1
+            //
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripProgressBar1.Visible = false;
+            // 
             // DataVerseTriggerPlugin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlFlows);
             this.Controls.Add(this.toolStripMenu);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DataVerseTriggerPlugin";
-            this.Size = new System.Drawing.Size(2341, 872);
+            this.Size = new System.Drawing.Size(2081, 698);
             this.ConnectionUpdated += new XrmToolBox.Extensibility.PluginControlBase.ConnectionUpdatedHandler(this.MyPluginControl_ConnectionUpdated);
             this.Load += new System.EventHandler(this.MyPluginControl_Load);
             this.toolStripMenu.ResumeLayout(false);
@@ -393,5 +435,8 @@ namespace DataVerseTrigger
         private System.Windows.Forms.ToolStripLabel lblYouMustConnect;
         private System.Windows.Forms.TabPage tabManual;
         private Controls.Grids.ManualTriggerCloudFlows cstManualTrigger;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelLastRefresh;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
     }
 }
